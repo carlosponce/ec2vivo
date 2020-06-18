@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userBilling">
+            <h2><span jhiTranslate="ec2VivoApp.userBilling.detail.title">User Billing</span> {{ userBilling.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.eventId">Event Id</span></dt>
+                <dd>
+                    <span>{{ userBilling.eventId }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.ticketId">Ticket Id</span></dt>
+                <dd>
+                    <span>{{ userBilling.ticketId }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.billingDate">Billing Date</span></dt>
+                <dd>
+                    <span>{{ userBilling.billingDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.email">Email</span></dt>
+                <dd>
+                    <span>{{ userBilling.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.discount">Discount</span></dt>
+                <dd>
+                    <span>{{ userBilling.discount }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.price">Price</span></dt>
+                <dd>
+                    <span>{{ userBilling.price }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.user">User</span></dt>
+                <dd>
+                    {{ userBilling.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-billing', userBilling.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

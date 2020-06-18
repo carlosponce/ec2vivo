@@ -1,0 +1,41 @@
+entity Region {
+	regionName String
+}
+
+entity Country {
+	countryName String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity UserBilling {
+	eventId String,
+	ticketId String,
+	billingDate LocalDate,
+	email String,
+	discount BigDecimal,
+    price BigDecimal
+}
+
+
+relationship OneToOne {
+	UserBilling{user} to User
+}
+
+
+
+
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}

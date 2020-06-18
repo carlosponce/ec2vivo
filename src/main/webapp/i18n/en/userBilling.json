@@ -1,0 +1,28 @@
+{
+  "ec2VivoApp": {
+    "userBilling": {
+      "home": {
+        "title": "User Billings",
+        "createLabel": "Create a new User Billing",
+        "createOrEditLabel": "Create or edit a User Billing",
+        "notFound": "No User Billings found"
+      },
+      "created": "A new User Billing is created with identifier {{ param }}",
+      "updated": "A User Billing is updated with identifier {{ param }}",
+      "deleted": "A User Billing is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Billing {{ id }}?"
+      },
+      "detail": {
+        "title": "User Billing"
+      },
+      "eventId": "Event Id",
+      "ticketId": "Ticket Id",
+      "billingDate": "Billing Date",
+      "email": "Email",
+      "discount": "Discount",
+      "price": "Price",
+      "user": "User"
+    }
+  }
+}
