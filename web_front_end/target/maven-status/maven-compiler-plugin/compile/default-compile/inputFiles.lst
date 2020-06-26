@@ -1,4 +1,4 @@
-/home/rcs/Documents/personal/coding/java/samples-java-spring-master/custom-login/src/main/java/com/okta/spring/example/HostedLoginCodeFlowExampleApplication.java
-/home/rcs/Documents/personal/coding/java/samples-java-spring-master/custom-login/src/main/java/com/okta/spring/example/controllers/HomeController.java
-/home/rcs/Documents/personal/coding/java/samples-java-spring-master/custom-login/src/main/java/com/okta/spring/example/controllers/UserDetailsController.java
-/home/rcs/Documents/personal/coding/java/samples-java-spring-master/custom-login/src/main/java/com/okta/spring/example/controllers/LoginController.java
+/opt3/ec2vivo/web_front_end/src/main/java/com/okta/spring/example/controllers/HomeController.java
+/opt3/ec2vivo/web_front_end/src/main/java/com/okta/spring/example/controllers/UserDetailsController.java
+/opt3/ec2vivo/web_front_end/src/main/java/com/okta/spring/example/HostedLoginCodeFlowExampleApplication.java
+/opt3/ec2vivo/web_front_end/src/main/java/com/okta/spring/example/controllers/LoginController.java
