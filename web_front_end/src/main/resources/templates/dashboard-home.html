@@ -18,7 +18,7 @@
 		<div id="sidebar-bg">
 			
       <header id="videohead-pro" class="sticky-header">
-			<div id="video-logo-background"><a href="dashboard-home.html"><img src="images/logo-video-layout.png" alt="Logo"></a></div>
+			<div id="video-logo-background"><a href="/dashboardHome"><img src="images/logo-video-layout.png" alt="Logo"></a></div>
 			
 			<div id="video-search-header">
 				<div id="search-icon-more"></div>
@@ -128,16 +128,16 @@
 			
 			<div id="header-user-profile">
 				<div id="header-user-profile-click" class="noselect">
-					<img src="images/demo/user-profile.jpg" alt="Suzie">
-					<div id="header-username">Suzie Smith</div><i class="fas fa-angle-down"></i>
+					<img src="images/user_generic_3.jpg" alt="Suzie">
+					<div id="header-username" th:text="${#authentication.name}"></div><i class="fas fa-angle-down"></i>
 				</div><!-- close #header-user-profile-click -->
 				<div id="header-user-profile-menu">
 					<ul>
-						<li><a href="dashboard-profile.html"><span class="icon-User"></span>My Profile</a></li>
-						<li><a href="dashboard-favorites.html"><span class="icon-Favorite-Window"></span>My Favorites</a></li>
-						<li><a href="dashboard-account.html"><span class="icon-Gears"></span>Account Details</a></li>
-						<li><a href="#!"><span class="icon-Life-Safer"></span>Help/Support</a></li>
-						<li><a href="index.html"><span class="icon-Power-3"></span>Log Out</a></li>
+                        <li><a href="/dashboardProfile"><span class="icon-User"></span>Mi Perfil</a></li>
+                        <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
+                        <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
+                        <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
+                        <li><a href="/post-logout"><span class="icon-Power-3"></span>Cerrar Sesión</a></li>
 					</ul>
 				</div><!-- close #header-user-profile-menu -->
 			</div><!-- close #header-user-profile -->
@@ -168,31 +168,31 @@
 			
 				<ul id="mobile-menu-pro">
 	            <li class="current-menu-item">
-	              <a href="dashboard-home.html">
+	              <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
 	                TV Series
 	              </a>
 	            <li>
 	            <li>
-	              <a href="dashboard-movies.html">
+	              <a href="/dashboardMovies">
 						<span class="icon-Reel"></span>
 	                Movies
 	              </a>
 	            </li>
 	            <li>
-	              <a href="dashboard-playlists.html">
+	              <a href="/dashboardPlaylists">
 						<span class="icon-Movie"></span>
 	                Playlists
 	              </a>
 	            </li>
 	            <li>
-	              <a href="dashboard-new-arrivals.html">
+	              <a href="/dashboardNewArrivals">
 						<span class="icon-Movie-Ticket"></span>
 	                New Arrivals
 	              </a>
 	            </li>
 	            <li>
-	              <a href="dashboard-coming-soon.html">
+	              <a href="/dashboardComingSoon">
 						<span class="icon-Clock"></span>
 	                Coming Soon
 	              </a>
@@ -220,31 +220,31 @@
 		<nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
             <ul id="vertical-sidebar-nav" class="sf-menu">
               <li class="normal-item-pro current-menu-item">
-                <a href="dashboard-home.html">
+                <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
                   TV Series
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-movies.html">
+                <a href="/dashboardMovies">
 						<span class="icon-Reel"></span>
                   Movies
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-playlists.html">
+                <a href="/dashboardPlaylists">
 						<span class="icon-Movie"></span>
                   Playlists
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-new-arrivals.html">
+                <a href="/dashboardNewArrivals">
 						<span class="icon-Movie-Ticket"></span>
                   New Arrivals
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-coming-soon.html">
+                <a href="/dashboardComingSoon">
 						<span class="icon-Clock"></span>
                   Coming Soon
                 </a>
@@ -293,7 +293,7 @@
 												<ul class="progression-studios-slider-rating">
 													<li>PG-13</li><li>HD</li>
 												</ul>
-												<h2><a href="dashboard-movie-profile.html">Seven Days in Ibiza</a></h2>
+												<h2><a href="/dashboardMovieProfile">Seven Days in Ibiza</a></h2>
 												<ul class="progression-studios-slider-meta">
 													<li>15 August, 2016 (UK)</li>
 													<li>163 min.</li>
@@ -372,7 +372,7 @@ single New Yorkers.</p>
 												<ul class="progression-studios-slider-rating">
 													<li>PG-13</li><li>HD</li>
 												</ul>
-												<h2 class="light-fonts-pro"><a href="dashboard-movie-profile.html">Made In America</a></h2>
+												<h2 class="light-fonts-pro"><a href="/dashboardMovieProfile">Made In America</a></h2>
 												<ul class="progression-studios-slider-meta">
 													<li>15 August, 2016 (UK)</li>
 													<li>163 min.</li>
@@ -478,9 +478,9 @@ single New Yorkers.</p>
 				<div class="row">
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">The Wild Things Are</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">The Wild Things Are</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -500,9 +500,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Central Intelligence</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Central Intelligence</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.6"
@@ -523,9 +523,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Zoolander No. 2</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Zoolander No. 2</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -545,9 +545,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Bad Neighbors 2</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Bad Neighbors 2</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.72"
@@ -568,9 +568,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Star Wars: Rogue One</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Star Wars: Rogue One</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -590,9 +590,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">The Imitation Game</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">The Imitation Game</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.6"
@@ -613,9 +613,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Fantastic Beasts</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Fantastic Beasts</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -635,9 +635,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Edge of Tomorrow</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Edge of Tomorrow</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.72"
@@ -657,9 +657,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Allegiant</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Allegiant</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -679,9 +679,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Lo and Behold</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Lo and Behold</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.6"
@@ -702,9 +702,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Drive</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Drive</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.86"
@@ -724,9 +724,9 @@ single New Yorkers.</p>
 					
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3">
 						<div class="item-listing-container-skrn">
-							<a href="dashboard-movie-profile.html"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
-								<div class="item-listing-text-skrn-vertical-align"><h6><a href="dashboard-movie-profile.html">Nightcrawler</a></h6>
+								<div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile">Nightcrawler</a></h6>
 							      <div
 							        class="circle-rating-pro"
 							        data-value="0.72"

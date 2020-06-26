@@ -1,20 +1,27 @@
-package ec.com.main;
+package com.okta.spring.example.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class IndexController {
-
-	@RequestMapping("/index")
+public class HomeController {
+    @GetMapping("/")
     public String index() {
         return "index";
     }
-	
-	@RequestMapping("/dashboardHome")
+
+    @GetMapping("/index")
+    public String index_2() {
+        return "index";
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @RequestMapping("/dashboardHome")
     public String dashboardHome() {
         return "dashboard-home";
     }
@@ -104,6 +111,5 @@ public class IndexController {
     public String signupWelcome() {
         return "signup-welcome.html";
     }
-	
-	
+
 }

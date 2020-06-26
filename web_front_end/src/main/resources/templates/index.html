@@ -22,10 +22,11 @@
 		<!-- Additional Plugins and JavaScript -->
 		<script src="js/navigation.js" defer></script><!-- Header Navigation JS Plugin -->
 		<script src="js/jquery.flexslider-min.js" defer></script><!-- FlexSlider JS Plugin -->		
-		<script src="js/script.js" defer></script><!-- Custom Document Ready JS -->
-		
+        <script src="js/script.js" defer></script><!-- Custom Document Ready JS -->
+        
 	</head>
 	<body>
+        
 		<header id="masthead-pro">
 			<div class="container">
 				
@@ -34,10 +35,10 @@
 				<nav id="site-navigation-pro">
 					<ul class="sf-menu">
 						<li class="normal-item-pro current-menu-item">
-							<a href="/index">Home</a>
+							<a href="/index">Inicio</a>
 						</li>
 						<li class="normal-item-pro">
-							<a href="/dashboardHome">New Releases</a>
+							<a href="/dashboardHome">Nuevos Lanzamientos</a>
 							<!-- Sub-Menu Example >
 							<ul class="sub-menu">
 								<li class="normal-item-pro">
@@ -53,18 +54,38 @@
 							< End Sub-Menu example -->
 						</li>
 						<li class="normal-item-pro">
-							<a href="/signupStep1">Pricing Plans</a>
+							<a href="/signupStep1">Planes</a>
 						</li>
 						<li class="normal-item-pro">
-							<a href="/faqs">FAQs</a>
+							<a href="/faqs">Preguntas frecuentes</a>
 						</li>
 					</ul>
 				</nav>
 				
-				<button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
-				
-				<div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
-				
+                <!--button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">sasa</button-->
+                
+                <form method="get" th:action="@{/oauth2/authorization/okta}" th:unless="${#authorization.expression('isAuthenticated()')}">
+                    <button id="login-button" class="btn btn-header-pro noselect" type="submit">Iniciar Sesión</button>
+                  </form>
+
+                <div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
+                
+                <div id="header-user-profile" th:if="${#authorization.expression('isAuthenticated()')}">
+                    <div id="header-user-profile-click" class="noselect">
+                        <img src="images/user_generic_3.jpg" alt="">
+                        <div id="header-username" th:text="${#authentication.name}"></div></div>
+                    </div><!-- close #header-user-profile-click -->
+                    <div id="header-user-profile-menu">
+                        <ul>
+                            <li><a href="/dashboardProfile"><span class="icon-User"></span>Mi Perfil</a></li>
+                            <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
+                            <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
+                            <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
+                            <li><a href="/post-logout"><span class="icon-Power-3"></span>Cerrar Sesión</a></li>
+                        </ul>
+                    </div><!-- close #header-user-profile-menu -->
+                </div><!-- close #header-user-profile -->
+                
 				<div class="clearfix"></div>
 			</div><!-- close .container -->
 			
@@ -75,7 +96,7 @@
 						<a href="/index">Home</a>
 					</li>
 					<li>
-						<a href="/dashboardHome">New Releases</a>
+						<a href="/dashboardHome">Nuevos Lanzamientos</a>
 						<!-- Mobile Sub-Menu Example >
 						<ul>
 							<li class="normal-item-pro">
@@ -91,16 +112,16 @@
 						< End Mobile Sub-Menu Example -->
 					</li>
 					<li>
-						<a href="/signupStep1">Pricing Plans</a>
+						<a href="/signupStep1">Planes</a>
 					</li>
 					<li>
-						<a href="/faqs">FAQs</a>
+						<a href="/faqs">Preguntas frecuentes</a>
 					</li>
 				</ul>
 				<div class="clearfix"></div>
 			
-				<button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
-			
+                <button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
+                
 			</nav>
 		</header>
 		
@@ -110,7 +131,7 @@
 		<div class="flexslider progression-studios-slider">
 	      <ul class="slides">
 				<li class="progression_studios_animate_in">
-					<div class="progression-studios-slider-image-background" style="background-image:url(http://via.placeholder.com/1920x693);">
+					<div class="progression-studios-slider-image-background" style="background-image:url(images/anderson_paak_2.jpg);">
 						<div class="progression-studios-slider-display-table">
 							<div class="progression-studios-slider-vertical-align">
 								
@@ -118,9 +139,9 @@
 									
 									<div class="progression-studios-slider-caption-width">
 										<div class="progression-studios-slider-caption-align">
-											<h2>Welcome to SKRN<span style="color:#3db13d;">.</span></h2>
-											<h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
-											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="/signupStep1" role="button">Start Your Free Trial</a>
+											<h2 style="color:#d5ddd5;">Bienvenido a SKRN<span style="color:#d5ddd5;">.</span></h2>
+											<h6 style="color:#ffffff;">Mira las mas larga colección de peliculas y series de TV, en cualquier lugar, en cualquier momento!</h6>
+											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="/signupStep1" role="button">Empieza tu prueba gratis!</a>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 									
@@ -163,9 +184,9 @@
 									
 									<div class="progression-studios-slider-caption-width">
 										<div class="progression-studios-slider-caption-align">
-											<h2>Ultimate Video Theme</h2>
-											<h6>Watch the largest collection of Movies and TV series anytime anywhere!</h6>
-											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="/signupStep1" role="button">Start Your Free Trial</a>
+											<h2>último hit de Anderson .Paak</h2>
+											<h6>Mira la mas larga colección de peliculas y series de TV, en cualquier lugar, en cualquier momento.</h6>
+											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="/signupStep1" role="button">Empieza tu prueba gratis</a>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 									
@@ -187,10 +208,10 @@
 
 				<div class="row">
 					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
-						<img src="http://via.placeholder.com/705x618" class="img-fluid" alt="Watch in Any Devices">
+						<img src="images/draco_rosa_mad_love.jpg" class="img-fluid" alt="Watch in Any Devices">
 					</div>
 					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
-	  					<h2 class="short-border-bottom">Watch On Any Device</h2>
+	  					<h2 class="short-border-bottom">Míralo en cualquier dispositivo</h2>
 						<p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
 						<div style="height:15px;"></div>
 						<p><a class="btn btn-green-pro" href="/signupStep1" role="button">Learn More</a></p>
@@ -335,65 +356,23 @@
 			</div><!-- close .container -->
 		</footer>
 		
-		<a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>
-		
-		
-		<!-- Modal -->
-		<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
-			 <button type="button" class="close float-close-pro" data-dismiss="modal" aria-label="Close">
-			           <span aria-hidden="true">&times;</span>
-			</button>
-		  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-		    <div class="modal-content">
-				 <div class="modal-header-pro">
-					 <h2>Welcome Back</h2>
-					 <h6>Sign in to your account to continue using SKRN</h6>
-				 </div>
-				 <div class="modal-body-pro social-login-modal-body-pro">
-			 
-					 <div class="registration-social-login-container">
-						 <form>
-							 <div class="form-group">
-								 <input type="text" class="form-control" id="username" placeholder="Username">
-							 </div>
-							 <div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="Password">
-							 </div>
-							 <div class="form-group">
-								 <button type="button" class="btn btn-green-pro btn-display-block">Sign In</button>
-							 </div>
-							 <div class="container-fluid">
-								 <div class="row no-gutters">
-							 		<div class="col checkbox-remember-pro"><input type="checkbox" id="checkbox-remember"><label for="checkbox-remember" class="col-form-label">Remember me</label></div>
-									<div class="col forgot-your-password"><a href="#!">Forgot your password?</a></div>
-								</div>
-							</div><!-- close .container-fluid -->
-				
-						 </form>
-			 
-						 <div class="registration-social-login-or">or</div>
-				 
-					 </div><!-- close .registration-social-login-container -->
-			 
-					 <div class="registration-social-login-options">
-					 	<h6>Sign in with your social account</h6>
-						<div class="social-icon-login facebook-color"><i class="fab fa-facebook-f"></i> Facebook</div>
-						<div class="social-icon-login twitter-color"><i class="fab fa-twitter"></i> Twitter</div>
-						<div class="social-icon-login google-color"><i class="fab fa-google-plus-g"></i> Google</div>
-					 </div><!-- close .registration-social-login-options -->
-			 
-					 <div class="clearfix"></div>
-			 
+        <a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>
+        
 
- 		      </div><!-- close .modal-body -->
+        	<!-- Required Framework JavaScript -->
+		<script src="js/libs/jquery-3.3.1.min.js"></script><!-- jQuery -->
+		<script src="js/libs/popper.min.js" defer></script><!-- Bootstrap Popper/Extras JS -->
+		<script src="js/libs/bootstrap.min.js" defer></script><!-- Bootstrap Main JS -->
+		<!-- All JavaScript in Footer -->
 		
-			 <a class="not-a-member-pro" href="/signupStep2">Not a member? <span>Join Today!</span></a>
-		    </div><!-- close .modal-content -->
-		  </div><!-- close .modal-dialog -->
-		</div><!-- close .modal -->
-		
-
-		
+		<!-- Additional Plugins and JavaScript -->
+		<script src="js/navigation.js" defer></script><!-- Header Navigation JS Plugin -->
+		<script src="js/jquery.flexslider-min.js" defer></script><!-- FlexSlider JS Plugin -->
+		<script src="js/jquery-asRange.min.js" defer></script><!-- Range Slider JS Plugin -->
+		<script src="js/circle-progress.min.js" defer></script><!-- Circle Progress JS Plugin -->
+		<script src="js/afterglow.min.js" defer></script><!-- Video Player JS Plugin -->
+		<script src="js/script.js" defer></script><!-- Custom Document Ready JS -->
+		<script src="js/script-dashboard.js" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
 		
 	</body>
 </html>
