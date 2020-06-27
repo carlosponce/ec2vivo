@@ -25,6 +25,8 @@ public class ApplicationProperties {
     private String svpbaseUrl;
     private String svptokenservice;
     private String svpvideoplaylistservice;
+    private String svplistppvpackages;
+    private String svplistvideos;
 
     public ApplicationProperties(){}
 
@@ -66,6 +68,22 @@ public class ApplicationProperties {
 
     public void setSvpvideoplaylistservice(String svpvideoplaylistservice) {
         this.svpvideoplaylistservice = svpvideoplaylistservice;
+    }
+
+    public String getSvplistppvpackages() {
+        return svplistppvpackages;
+    }
+
+    public void setSvplistppvpackages(String svplistppvpackages) {
+        this.svplistppvpackages = svplistppvpackages;
+    }
+
+    public String getSvplistvideos() {
+        return svplistvideos;
+    }
+
+    public void setSvplistvideos(String svplistvideos) {
+        this.svplistvideos = svplistvideos;
     }
 
     

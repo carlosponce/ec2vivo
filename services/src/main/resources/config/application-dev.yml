@@ -99,3 +99,5 @@ application:
   svpbaseurl: https://www.streamingvideoprovider.com/?l=api&a=
   svptokenservice: svp_auth_get_token
   svpvideoplaylistservice: svp_list_video_playlists
+  svplistppvpackages: svp_list_ppv_packages
+  svplistvideos: svp_list_videos
