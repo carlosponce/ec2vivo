@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9090
 
 spring:
   security:
@@ -13,6 +13,7 @@ spring:
 okta:
   oauth2:
     redirect-uri: /authorization-code/callback
+    postLogoutRedirectUri: http://localhost:${server.port}/
     scopes:
     - openid
     - email

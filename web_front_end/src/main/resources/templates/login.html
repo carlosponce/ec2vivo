@@ -44,12 +44,33 @@ config.authParams = {
   scopes: /*[[${scopes}]]*/ '[scopes]',
   display: 'page'
 };
+config.registration= {
+        parseSchema: function(schema, onSuccess, onFailure) {
+           // handle parseSchema callback
+           onSuccess(schema);
+        },
+        preSubmit: function (postData, onSuccess, onFailure) {
+           // handle preSubmit callback
+           onSuccess(postData);
+        },
+        postSubmit: function (response, onSuccess, onFailure) {
+            // handle postsubmit callback
+           onSuccess(response);
+        }
+      };
+      
+config.features= {
+        // Used to enable registration feature on the widget.
+        // https://github.com/okta/okta-signin-widget#feature-flags
+         registration: true // REQUIRED
+      }
 
 /*********************************************************/
 /* ADD ME TO CONFIGURE SOCIAL LOGIN!!!                   */
 config.idps = [  
-   {type: 'FACEBOOK', id: '<< Your Facebook IdP ID >>'},  
-   {type: 'GOOGLE', id: '<< Your Google IdP ID >>' }  
+   {type: 'FACEBOOK', id: '0oahjn0omYTcpOmE74x6'},  
+   {type: 'GOOGLE', id: '0oagw1dsrJMIJMbu94x6' },
+   {type: 'MICROSOFT', id: '0oahjq4owIrtXi3Gt4x6' }  
 ];  
 /*********************************************************/
 

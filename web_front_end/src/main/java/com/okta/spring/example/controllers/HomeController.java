@@ -79,12 +79,12 @@ public class HomeController {
 	
 	@RequestMapping("/landing")
     public String landing() {
-        return "landing.html";
+        return "landing";
     }
 	
 	@RequestMapping("/faqs")
     public String faqs() {
-        return "faqs.html";
+        return "faqs";
     }
 	
 	@RequestMapping("/modalLoginSimple")
@@ -94,22 +94,22 @@ public class HomeController {
 	
 	@RequestMapping("/signupStep2")
     public String signupStep2() {
-        return "signup-step2.html";
+        return "signup-step2";
     }
 	
 	@RequestMapping("/signupStep3")
     public String signupStep3() {
-        return "signup-step3.html";
+        return "signup-step3";
     }
 	
 	@RequestMapping("/signupStep4")
     public String signupStep4() {
-        return "signup-step4.html";
+        return "signup-step4";
     }
 	
 	@RequestMapping("/signupWelcome")
     public String signupWelcome() {
-        return "signup-welcome.html";
+        return "signup-welcome";
     }
 
 }
