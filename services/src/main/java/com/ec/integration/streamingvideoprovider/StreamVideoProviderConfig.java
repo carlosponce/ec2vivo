@@ -1,5 +1,6 @@
 package com.ec.integration.streamingvideoprovider;
 
+import com.ec.util.XmlUtil;
 import com.ec.vivo.config.ApplicationProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,27 @@ public class StreamVideoProviderConfig {
         System.out.println(url);
         HttpResponse<String> response = Unirest.get(url).asString();
         System.out.println(response.getBody());
+     
         return response.getBody();
     }
+
+    public String  getPpvPackages(){
+        String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
+        String url = applicationProperties.getSvpbaseUrl()+applicationProperties.getSvplistppvpackages()+"&token="+token;
+        System.out.println(url);
+        HttpResponse<String> response = Unirest.get(url).asString();
+        System.out.println(response.getBody());
+         return response.getBody();
+    }
+
+    public String  getListVideos(){
+        String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
+        String url = applicationProperties.getSvpbaseUrl()+applicationProperties.getSvplistvideos()+"&token="+token;
+        System.out.println(url);
+        HttpResponse<String> response = Unirest.get(url).asString();
+        System.out.println(response.getBody());
+         return response.getBody();
+    }
+
 
 }

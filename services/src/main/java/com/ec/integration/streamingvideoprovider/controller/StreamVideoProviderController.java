@@ -22,4 +22,14 @@ public class StreamVideoProviderController{
 	public  String getToken(){
         return config.getToken();
     }
+
+    @GetMapping(value = "/getPpvPackages")
+	public  String getPpvPackages(){
+        return config.getPpvPackages();
+    }
+
+    @GetMapping(value = "/getListVideos")
+	public  String getListVideos(){
+        return config.getListVideos();
+    }
 }
