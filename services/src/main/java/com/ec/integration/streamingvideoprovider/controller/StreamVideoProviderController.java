@@ -4,7 +4,10 @@ import java.net.URISyntaxException;
 
 import com.ec.integration.streamingvideoprovider.StreamVideoProviderConfig;
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupPayload;
+import com.ec.integration.streamingvideoprovider.message.xmldto.PasswordPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.ResponseMsg;
+import com.ec.integration.streamingvideoprovider.message.xmldto.TicketPayload;
+import com.ec.integration.streamingvideoprovider.message.xmldto.VideoPasswordPayload;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,21 +43,74 @@ public class StreamVideoProviderController{
     }
 
     @GetMapping(value = "/getListVideosJson")
-	public  ResponseMsg getListVideosObj(){
-        return config.getListVideosObj();
+	public  ResponseMsg getListVideosJson(){
+        return config.getListVideosJson();
     }
 
-    @PostMapping("/createPasswordPackageJson")
-    public ResponseEntity<ResponseMsg> createPasswordPackageJson(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
-        System.out.println("inside createPasswordPackage controller");
-        ResponseMsg response = config.createPasswordPackageObj(groupinfo);
-        return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
-    }
     @PostMapping("/createPasswordPackage")
     public ResponseEntity<String> createPasswordPackage(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
         System.out.println("inside createPasswordPackage controller");
         String str = config.createPasswordPackage(groupinfo);
         return new ResponseEntity<String>(str,HttpStatus.OK);
+    }
+
+    @PostMapping("/createPasswordPackageJson")
+    public ResponseEntity<ResponseMsg> createPasswordPackageJson(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
+        System.out.println("inside createPasswordPackageJson controller");
+        ResponseMsg response = config.createPasswordPackageJson(groupinfo);
+        return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
+    }
+
+    @PostMapping("/createPpvPackage")
+    public ResponseEntity<String> createPpvPackage(@RequestBody TicketPayload obj) throws URISyntaxException {
+        System.out.println("inside createPpvPackage controller");
+        String str = config.createPpvPackage(obj);
+        return new ResponseEntity<String>(str,HttpStatus.OK);
+    }
+
+    @PostMapping("/createPpvPackageJson")
+    public ResponseEntity<ResponseMsg> createPpvdPackageJson(@RequestBody TicketPayload obj) throws URISyntaxException {
+        System.out.println("inside createPpvPackageJspn controller");
+        ResponseMsg response = config.createPpvPackageJson(obj);
+        return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
+    }
+   
+    @GetMapping(value = "/getListPasswordPackages")
+	public  String getListPasswordPackages(){
+        return config.getListPasswordPackages();
+    }
+
+    @GetMapping(value = "/getListPasswordPackagesJson")
+	public  ResponseMsg getListPasswordPackagesJson(){
+        return config.getListPasswordPackagesJson();
+    }
+
+    @PostMapping("/setVideoPassword")
+    public ResponseEntity<String> setVideoPassword(@RequestBody VideoPasswordPayload obj) throws URISyntaxException {
+        System.out.println("inside setVideoPassword controller");
+        String str = config.setVideoPassword(obj);
+        return new ResponseEntity<String>(str,HttpStatus.OK);
+    }
+
+    @PostMapping("/setVideoPasswordJson")
+    public ResponseEntity<ResponseMsg> setVideoPasswordJson(@RequestBody VideoPasswordPayload obj) throws URISyntaxException {
+        System.out.println("inside setVideoPasswordJson controller");
+        ResponseMsg response = config.setVideoPasswordJson(obj);
+        return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
+    }
+
+    @PostMapping("/addGroupPassword")
+    public ResponseEntity<String> addGroupPassword(@RequestBody PasswordPayload obj) throws URISyntaxException {
+        System.out.println("inside addGroupPassword controller");
+        String str = config.addGroupPassword(obj);
+        return new ResponseEntity<String>(str,HttpStatus.OK);
+    }
+
+    @PostMapping("/addGroupPasswordJson")
+    public ResponseEntity<ResponseMsg> addGroupPasswordJson(@RequestBody PasswordPayload obj) throws URISyntaxException {
+        System.out.println("inside addGroupPasswordJson controller");
+        ResponseMsg response = config.addGroupPasswordJson(obj);
+        return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
     }
 
 }

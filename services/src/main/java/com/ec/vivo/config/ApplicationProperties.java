@@ -28,6 +28,10 @@ public class ApplicationProperties {
     private String svplistppvpackages;
     private String svplistvideos;
     private String svpcreatepasswordpackage;
+    private String svpcreateppvpackage;
+    private String svplistpasswordpackage;
+    private String svpsetvideopasswordpackage;
+    private String svpaddgrouppassword;
 
     public ApplicationProperties(){}
 
@@ -93,6 +97,38 @@ public class ApplicationProperties {
 
     public void setSvpcreatepasswordpackage(String svpcreatepasswordpackage) {
         this.svpcreatepasswordpackage = svpcreatepasswordpackage;
+    }
+
+    public String getSvpcreateppvpackage() {
+        return svpcreateppvpackage;
+    }
+
+    public void setSvpcreateppvpackage(String svpcreateppvpackage) {
+        this.svpcreateppvpackage = svpcreateppvpackage;
+    }
+
+    public String getSvplistpasswordpackage() {
+        return svplistpasswordpackage;
+    }
+
+    public void setSvplistpasswordpackage(String svplistpasswordpackage) {
+        this.svplistpasswordpackage = svplistpasswordpackage;
+    }
+
+    public String getSvpsetvideopasswordpackage() {
+        return svpsetvideopasswordpackage;
+    }
+
+    public void setSvpsetvideopasswordpackage(String svpsetvideopasswordpackage) {
+        this.svpsetvideopasswordpackage = svpsetvideopasswordpackage;
+    }
+
+    public String getSvpaddgrouppassword() {
+        return svpaddgrouppassword;
+    }
+
+    public void setSvpaddgrouppassword(String svpaddgrouppassword) {
+        this.svpaddgrouppassword = svpaddgrouppassword;
     }
 
     

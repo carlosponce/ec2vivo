@@ -163,3 +163,7 @@ application:
   svplistppvpackages: svp_list_ppv_packages
   svplistvideos: svp_list_videos
   svpcreatepasswordpackage: svp_create_password_package
+  svpcreateppvpackage: svp_create_ppv_package
+  svplistpasswordpackage: svp_list_password_packages
+  svpsetvideopasswordpackage: svp_set_video_password_package
+  svpaddgrouppassword: svp_add_group_passwords
