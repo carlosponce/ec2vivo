@@ -67,9 +67,9 @@ public class HostedLoginCodeFlowExampleApplication {
 
                  // send the user back to the root page when they logout
                 .and()
-                    .logout().logoutSuccessUrl("/")
+                    .logout().logoutSuccessUrl("/").permitAll()
 
-                .and().oauth2Client()
+                    .and().oauth2Client()
                 .and().oauth2Login().redirectionEndpoint()
                     .baseUri("/authorization-code/callback");
         }

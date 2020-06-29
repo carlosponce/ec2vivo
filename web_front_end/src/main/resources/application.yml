@@ -12,7 +12,11 @@ spring:
 
 okta:
   oauth2:
+    issuer: https://dev-271413.okta.com/oauth2/default
+    clientId: 0oafem8k4O49jU0tM4x6
+    clientSecret: YMohoBRPrEx4e5RHyeeQDqrulNZ5x8365lPhIuB2
     redirect-uri: /authorization-code/callback
+    postLogoutRedirectUri: http://localhost:${server.port}/
     scopes:
     - openid
     - email

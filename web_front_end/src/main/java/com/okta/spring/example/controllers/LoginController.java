@@ -72,11 +72,11 @@ public class LoginController {
         return mav;
     }
 
-    @GetMapping("/post-logout")
+     @GetMapping("/post-logout")
     public String logout() {
-        return "logout";
+        return "index";
     }
-
+    
     @GetMapping("/403")
     public String error403() {
         return "403";
