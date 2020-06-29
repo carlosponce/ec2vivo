@@ -48,7 +48,6 @@ import reactor.core.publisher.Mono;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
@@ -83,26 +82,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(final ServerHttpSecurity http) {
 
-        // Build the request matcher for CSFR protection
-        final RequestMatcher csrfRequestMatcher = new RequestMatcher() {
-
-            // Disable CSFR protection on the following urls:
-            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/login"),
-                    new AntPathRequestMatcher("/logout"), new AntPathRequestMatcher("/api/streamvideoprovider/**") };
-
-            @Override
-            public boolean matches(final HttpServletRequest request) {
-                // If the request match one url the CSFR protection will be disabled
-                for (final AntPathRequestMatcher rm : requestMatchers) {
-                    if (rm.matches(request)) {
-                        return false;
-                    }
-                }
-                return true;
-            } // method matches
-
-        }; // new RequestMatcher
-
+        
         // @formatter:off
         http
             .securityMatcher(new NegatedServerWebExchangeMatcher(new OrServerWebExchangeMatcher(

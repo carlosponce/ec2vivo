@@ -155,8 +155,8 @@ jhipster:
 
 # application:
 application:
-  svpapikey: apc-FFyqJIzDHppp
-  svpapicode: apc-KxqqHMwyEE2E
+  svpapikey: apc-yoE3GovMv2EE
+  svpapicode: apc-6ywIDMsH1nHD
   svpbaseurl: https://www.streamingvideoprovider.com/?l=api&a=
   svptokenservice: svp_auth_get_token
   svpvideoplaylistservice: svp_list_video_playlists

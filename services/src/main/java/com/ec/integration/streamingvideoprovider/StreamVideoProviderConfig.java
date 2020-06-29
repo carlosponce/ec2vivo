@@ -1,5 +1,6 @@
 package com.ec.integration.streamingvideoprovider;
 
+import com.ec.integration.streamingvideoprovider.message.xmldto.GroupMsg;
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.ResponseMsg;
 import com.ec.integration.streamingvideoprovider.message.xmldto.Video;
@@ -70,8 +71,8 @@ public class StreamVideoProviderConfig {
         System.out.println("inside createPasswordPackage config");
         String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
         String url = applicationProperties.getSvpbaseUrl()+applicationProperties.getSvpcreatepasswordpackage()+"&token="+token;
-        url=url+"&package_name="+groupInfo.getPackageName()+"group_0_name="+groupInfo.getGroupName()+"group_0_password_type="+groupInfo.getGroupPasswordType();
-        url=url+"group_0_count_passwords="+groupInfo.getGroupCountPassword();
+        url=url+"&package_name="+groupInfo.getPackageName()+"&group_0_name="+groupInfo.getGroupName()+"&group_0_password_type="+groupInfo.getGroupPasswordType();
+        url=url+"&group_0_count_passwords="+groupInfo.getGroupCountPassword();
         System.out.println(url);
         HttpResponse<String> response = Unirest.get(url).asString();
         System.out.println(response.getBody());
@@ -87,8 +88,8 @@ public class StreamVideoProviderConfig {
         ResponseMsg rp= XmlUtil.unmarshall(strxml, ResponseMsg.class);
         System.out.println(rp.getResult());
 
-        for(Video v :rp.getVideoList()){
-            System.out.println(v.getTitle());
+        for(GroupMsg o :rp.getGroups()){
+            System.out.println(o.getRefno());
         }
          return rp;
     }

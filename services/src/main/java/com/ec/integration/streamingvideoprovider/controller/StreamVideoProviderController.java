@@ -39,16 +39,22 @@ public class StreamVideoProviderController{
         return config.getListVideos();
     }
 
-    @GetMapping(value = "/getListVideosObj")
+    @GetMapping(value = "/getListVideosJson")
 	public  ResponseMsg getListVideosObj(){
         return config.getListVideosObj();
     }
 
-    @PostMapping("/createPasswordPackage")
-    public ResponseEntity<ResponseMsg> createPasswordPackage(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
+    @PostMapping("/createPasswordPackageJson")
+    public ResponseEntity<ResponseMsg> createPasswordPackageJson(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
         System.out.println("inside createPasswordPackage controller");
         ResponseMsg response = config.createPasswordPackageObj(groupinfo);
         return new ResponseEntity<ResponseMsg>(response,HttpStatus.OK);
+    }
+    @PostMapping("/createPasswordPackage")
+    public ResponseEntity<String> createPasswordPackage(@RequestBody GroupPayload groupinfo) throws URISyntaxException {
+        System.out.println("inside createPasswordPackage controller");
+        String str = config.createPasswordPackage(groupinfo);
+        return new ResponseEntity<String>(str,HttpStatus.OK);
     }
 
 }
