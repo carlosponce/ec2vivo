@@ -101,3 +101,4 @@ application:
   svpvideoplaylistservice: svp_list_video_playlists
   svplistppvpackages: svp_list_ppv_packages
   svplistvideos: svp_list_videos
+  svpcreatepasswordpackage: svp_create_password_package

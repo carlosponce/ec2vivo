@@ -62,6 +62,7 @@ public class HostedLoginCodeFlowExampleApplication {
 
                 .and().authorizeRequests()
                         .antMatchers(HttpMethod.GET,"/", "/custom-login", "/css/**","/style.css","/icons/**","/images/**","/js/**").permitAll()
+                        .antMatchers("/api/streamvideoprovider").permitAll()
                         .anyRequest().authenticated()
 
                  // send the user back to the root page when they logout

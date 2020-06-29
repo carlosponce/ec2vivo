@@ -40,11 +40,15 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.header.ReferrerPolicyServerHttpHeadersWriter;
 import org.springframework.security.web.server.util.matcher.NegatedServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.zalando.problem.spring.webflux.advice.security.SecurityProblemSupport;
 import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers.pathMatchers;
 
@@ -62,14 +66,43 @@ public class SecurityConfiguration {
 
     private final SecurityProblemSupport problemSupport;
 
-    public SecurityConfiguration(AuditEventService auditEventService, JHipsterProperties jHipsterProperties, SecurityProblemSupport problemSupport) {
+    String [] publicUrls = new String [] {
+        "/public/**",
+        "/login",
+        "/logout",
+        "/api/streamvideoprovider"
+};
+
+    public SecurityConfiguration(final AuditEventService auditEventService, final JHipsterProperties jHipsterProperties,
+            final SecurityProblemSupport problemSupport) {
         this.auditEventService = auditEventService;
         this.jHipsterProperties = jHipsterProperties;
         this.problemSupport = problemSupport;
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain springSecurityFilterChain(final ServerHttpSecurity http) {
+
+        // Build the request matcher for CSFR protection
+        final RequestMatcher csrfRequestMatcher = new RequestMatcher() {
+
+            // Disable CSFR protection on the following urls:
+            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/login"),
+                    new AntPathRequestMatcher("/logout"), new AntPathRequestMatcher("/api/streamvideoprovider/**") };
+
+            @Override
+            public boolean matches(final HttpServletRequest request) {
+                // If the request match one url the CSFR protection will be disabled
+                for (final AntPathRequestMatcher rm : requestMatchers) {
+                    if (rm.matches(request)) {
+                        return false;
+                    }
+                }
+                return true;
+            } // method matches
+
+        }; // new RequestMatcher
+
         // @formatter:off
         http
             .securityMatcher(new NegatedServerWebExchangeMatcher(new OrServerWebExchangeMatcher(
@@ -77,10 +110,13 @@ public class SecurityConfiguration {
                 pathMatchers(HttpMethod.OPTIONS, "/**")
             )))
             .csrf()
-                .csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse())
+               .disable();
+               //.csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse())
+               
+              /* 
         .and()
             // See https://github.com/spring-projects/spring-security/issues/5766
-            .addFilterAt(new CookieCsrfFilter(), SecurityWebFiltersOrder.REACTOR_CONTEXT)
+           .addFilterAt(new CookieCsrfFilter(), SecurityWebFiltersOrder.REACTOR_CONTEXT)
             .addFilterAt(new SpaWebFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
             .exceptionHandling()
                 .accessDeniedHandler(problemSupport)
@@ -100,11 +136,13 @@ public class SecurityConfiguration {
             .pathMatchers("/*.*").permitAll()
             .pathMatchers("/api/auth-info").permitAll()
             .pathMatchers("/api/**").permitAll()
+            .pathMatchers("/api/streamvideoprovider").permitAll()
             .pathMatchers("/services/**", "/swagger-resources/**", "/v2/api-docs").authenticated()
             .pathMatchers("/management/health").permitAll()
             .pathMatchers("/management/info").permitAll()
             .pathMatchers("/management/prometheus").permitAll()
             .pathMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN);
+            */
 
         http.oauth2Login()
             .authenticationSuccessHandler(this::onAuthenticationSuccess)
@@ -118,7 +156,7 @@ public class SecurityConfiguration {
     }
 
     Converter<Jwt, Mono<AbstractAuthenticationToken>> jwtAuthenticationConverter() {
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        final JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new JwtGrantedAuthorityConverter());
         return new ReactiveJwtAuthenticationConverterAdapter(jwtAuthenticationConverter);
     }
@@ -135,12 +173,13 @@ public class SecurityConfiguration {
         return (userRequest) -> {
             // Delegate to the default implementation for loading a user
             return delegate.loadUser(userRequest).map(user -> {
-                Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
+                final Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
 
                 user.getAuthorities().forEach(authority -> {
                     if (authority instanceof OidcUserAuthority) {
-                        OidcUserAuthority oidcUserAuthority = (OidcUserAuthority) authority;
-                        mappedAuthorities.addAll(SecurityUtils.extractAuthorityFromClaims(oidcUserAuthority.getUserInfo().getClaims()));
+                        final OidcUserAuthority oidcUserAuthority = (OidcUserAuthority) authority;
+                        mappedAuthorities.addAll(
+                                SecurityUtils.extractAuthorityFromClaims(oidcUserAuthority.getUserInfo().getClaims()));
                     }
                 });
 
@@ -151,20 +190,23 @@ public class SecurityConfiguration {
 
     @Bean
     ReactiveJwtDecoder jwtDecoder() {
-        NimbusReactiveJwtDecoder jwtDecoder = (NimbusReactiveJwtDecoder) ReactiveJwtDecoders.fromOidcIssuerLocation(issuerUri);
+        final NimbusReactiveJwtDecoder jwtDecoder = (NimbusReactiveJwtDecoder) ReactiveJwtDecoders
+                .fromOidcIssuerLocation(issuerUri);
 
-        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(jHipsterProperties.getSecurity().getOauth2().getAudience());
-        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
-        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
+        final OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(
+                jHipsterProperties.getSecurity().getOauth2().getAudience());
+        final OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
+        final OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer,
+                audienceValidator);
 
         jwtDecoder.setJwtValidator(withAudience);
 
         return jwtDecoder;
     }
 
-    private ServerAuthenticationSuccessHandler redirectServerAuthenticationSuccessHandler = new RedirectServerAuthenticationSuccessHandler();
+    private final ServerAuthenticationSuccessHandler redirectServerAuthenticationSuccessHandler = new RedirectServerAuthenticationSuccessHandler();
 
-    private Mono<Void> onAuthenticationSuccess(WebFilterExchange exchange, Authentication authentication) {
+    private Mono<Void> onAuthenticationSuccess(final WebFilterExchange exchange, final Authentication authentication) {
         return redirectServerAuthenticationSuccessHandler.onAuthenticationSuccess(exchange, authentication)
             .thenReturn(authentication.getPrincipal())
             .filter(principal -> principal instanceof OidcUser)

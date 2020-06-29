@@ -27,6 +27,7 @@ public class ApplicationProperties {
     private String svpvideoplaylistservice;
     private String svplistppvpackages;
     private String svplistvideos;
+    private String svpcreatepasswordpackage;
 
     public ApplicationProperties(){}
 
@@ -84,6 +85,14 @@ public class ApplicationProperties {
 
     public void setSvplistvideos(String svplistvideos) {
         this.svplistvideos = svplistvideos;
+    }
+
+    public String getSvpcreatepasswordpackage() {
+        return svpcreatepasswordpackage;
+    }
+
+    public void setSvpcreatepasswordpackage(String svpcreatepasswordpackage) {
+        this.svpcreatepasswordpackage = svpcreatepasswordpackage;
     }
 
     
