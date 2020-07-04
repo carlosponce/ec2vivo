@@ -18,7 +18,7 @@
 		<div id="sidebar-bg">
 			
       <header id="videohead-pro" class="sticky-header">
-			<div id="video-logo-background"><a href="dashboard-home.html"><img src="images/logo-video-layout.png" alt="Logo"></a></div>
+			<div id="video-logo-background"><a href="/dashboardHome"><img src="images/logo-video-layout.png" alt="Logo"></a></div>
 			
 			<div id="video-search-header">
 				<div id="search-icon-more"></div>
@@ -137,7 +137,14 @@
                         <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
                         <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
                         <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
-                        <li><a href="/post-logout"><span class="icon-Power-3"></span>Cerrar Sesión</a></li>
+                        <li>
+
+                            <form id="logoutForm" method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                <a href="#" onclick="document.getElementById('logoutForm').submit();"><span class="icon-Power-3"></span>Cerrar Sesión</a>
+                            </form>
+    
+                            </li>
 					</ul>
 				</div><!-- close #header-user-profile-menu -->
 			</div><!-- close #header-user-profile -->
@@ -168,31 +175,31 @@
 			
 				<ul id="mobile-menu-pro">
 	            <li>
-	              <a href="dashboard-home.html">
+	              <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
 	                TV Series
 	              </a>
 	            <li>
 	            <li>
-	              <a href="dashboard-movies.html">
+	              <a href="/dashboardMovies">
 						<span class="icon-Reel"></span>
 	                Movies
 	              </a>
 	            </li>
 	            <li class="current-menu-item">
-	              <a href="dashboard-playlists.html">
+	              <a href="/dashboardPlaylists">
 						<span class="icon-Movie"></span>
 	                Playlists
 	              </a>
 	            </li>
 	            <li>
-	              <a href="dashboard-new-arrivals.html">
+	              <a href="/dashboardNewArrivals">
 						<span class="icon-Movie-Ticket"></span>
 	                New Arrivals
 	              </a>
 	            </li>
 	            <li>
-	              <a href="dashboard-coming-soon.html">
+	              <a href="/dashboardComingSoon">
 						<span class="icon-Clock"></span>
 	                Coming Soon
 	              </a>
@@ -220,31 +227,31 @@
 		<nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
             <ul id="vertical-sidebar-nav" class="sf-menu">
               <li class="normal-item-pro">
-                <a href="dashboard-home.html">
+                <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
                   TV Series
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-movies.html">
+                <a href="/dashboardMovies">
 						<span class="icon-Reel"></span>
                   Movies
                 </a>
               </li>
               <li class="normal-item-pro current-menu-item">
-                <a href="dashboard-playlists.html">
+                <a href="/dashboardPlaylists">
 						<span class="icon-Movie"></span>
                   Playlists
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-new-arrivals.html">
+                <a href="/dashboardNewArrivals">
 						<span class="icon-Movie-Ticket"></span>
                   New Arrivals
                 </a>
               </li>
               <li class="normal-item-pro">
-                <a href="dashboard-coming-soon.html">
+                <a href="/dashboardComingSoon">
 						<span class="icon-Clock"></span>
                   Coming Soon
                 </a>

@@ -1,16 +1,43 @@
 package com.okta.spring.example.controllers;
 
+import java.util.List;
+import java.util.stream.Stream;
+
+import com.okta.spring.example.services.StreamProviderService;
+import com.okta.spring.example.services.Video;
+import com.okta.spring.example.services.VideoList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private StreamProviderService streamProviderService;
+
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
+    @RequestMapping("/getVideoList")
+    @ResponseBody
+    public VideoList  getVideoListJson() {
+        return streamProviderService.getVideoList();
+    }
+
+    @RequestMapping("/home/getVideoList")
+    
+        public String getVideoList(Model model) {
+        model.addAttribute("videoList", streamProviderService.getVideoList());
+        return "home";
+    }
+    
     @GetMapping("/index")
     public String index_2() {
         return "index";

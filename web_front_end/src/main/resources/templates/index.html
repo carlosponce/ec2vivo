@@ -73,7 +73,14 @@
                             <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
                             <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
                             <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
-                            <li><a href="/post-logout"><span class="icon-Power-3"></span>Cerrar Sesión</a></li>
+                            <li>
+
+                                <form id="logoutForm" method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <a href="#" onclick="document.getElementById('logoutForm').submit();"><span class="icon-Power-3"></span>Cerrar Sesión</a>
+                                </form>
+        
+                                </li>
                         </ul>
                     </div><!-- close #header-user-profile-menu -->
                 </div><!-- close #header-user-profile -->
