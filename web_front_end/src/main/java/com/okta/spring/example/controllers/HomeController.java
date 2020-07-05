@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,18 +28,35 @@ public class HomeController {
     @RequestMapping("/getVideoList")
     @ResponseBody
     public ResponseMsg  getVideoListJson() {
-        
-
         return streamProviderService.getVideoList();
     }
 
     @RequestMapping("/home/getVideoList")
-    
-        public String getVideoList(Model model) {
+    public String getVideoList(Model model) {
         model.addAttribute("videoList", streamProviderService.getVideoList());
         return "home";
     }
-    
+
+
+
+    @RequestMapping("/home/getVideoList/{clipKey}")
+    public String getVideoListDetail(@PathVariable("clipKey") String clipKey, Model model) {
+        model.addAttribute("clipKey", clipKey);
+        return getVideoList(model);
+    }
+
+    @RequestMapping("/dashboardMovieProfile/{clipKey}")
+    public String dashboardMovieProfile(@PathVariable("clipKey") String clipKey, Model model) {
+        model.addAttribute("clipKey", clipKey);
+        return "dashboard-movie-profile";
+    }
+
+    @RequestMapping("/dashboardMovieProfile")
+    public String dashboardMovieProfile(Model model) {
+
+        return "dashboard-movie-profile";
+    }
+
     @GetMapping("/index")
     public String index_2() {
         return "index";
@@ -50,7 +68,8 @@ public class HomeController {
     }
 
     @RequestMapping("/dashboardHome")
-    public String dashboardHome() {
+    public String dashboardHome(Model model) {
+        model.addAttribute("videoList", streamProviderService.getVideoList());
         return "dashboard-home";
     }
 	
@@ -74,10 +93,6 @@ public class HomeController {
         return "dashboard-favorites";
     }
 	
-	@RequestMapping("/dashboardMovieProfile")
-    public String dashboardMovieProfile() {
-        return "dashboard-movie-profile";
-    }
 	
 	@RequestMapping("/dashboardMovies")
     public String dashboardMovies() {

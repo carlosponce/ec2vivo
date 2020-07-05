@@ -4,10 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="css/landing-page-styles.css">
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700,900%7CMontserrat:300,400,600,700">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{/style.css}">
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
+		
+		<link rel="stylesheet" th:href="@{icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
+		<link rel="stylesheet" th:href="@{icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
+        
 				
 		<title>SKRN - Media Streaming App</title>
 	</head>
@@ -59,13 +62,16 @@
 		</div><!-- close #progression-studios-landing-page-container -->
 		
 
-		<!-- Required Framework JavaScript -->
-		<script src="js/libs/jquery-3.3.1.min.js"></script><!-- jQuery -->
-		<script src="js/libs/popper.min.js" defer></script><!-- Bootstrap Popper/Extras JS -->
-		<script src="js/libs/bootstrap.min.js" defer></script><!-- Bootstrap Main JS -->
-		<!-- All JavaScript in Footer -->
-		
-		<script src="js/afterglow.min.js" defer></script><!-- Video Player JS Plugin -->
+        
+        			<!-- Required Framework JavaScript -->
+                    <script th:src="@{/js/libs/jquery-3.3.1.min.js}"></script><!-- jQuery -->
+                    <script th:src="@{/js/libs/popper.min.js}" defer></script><!-- Bootstrap Popper/Extras JS -->
+                    <script th:src="@{/js/libs/bootstrap.min.js}" defer></script><!-- Bootstrap Main JS -->
+                    <!-- All JavaScript in Footer -->
+                    
+
+                    <script th:src="@{/js/afterglow.min.js}" defer></script><!-- Video Player JS Plugin -->
+
 		
 	</body>
 </html>

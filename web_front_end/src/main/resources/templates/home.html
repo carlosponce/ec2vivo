@@ -44,34 +44,39 @@
         </form>
 
 
-        <table border="1">
+        <table border="1"  th:if="${videoList}">
             <tr>
-             <td>ID</td>
-             <td>Title</td>
-             
+                    <td>Clip Key</td>
+                    <td>Clip Title</td>
+                    <td>Clip Preview Image</td>
             </tr>
-            <tr th:each="video , stat: ${videoList.getVideoList()}">
-                <td th:text="${video.getClipKey()}">Clip Key</td>
-                <td th:text="${video.getTitle()}">Clip Title</td>
-             <!-- <td th:text="${stat}"></td>
+            <tr  th:each="video , stat: ${videoList.getVideoList()}" >
+                    <td th:text="${video.getClipKey()}">Clip Key</td>
+                    <td ><a th:href="@{/home/getVideoList/{clipKey}(clipKey=${video.getClipKey()})}" th:text="${video.getTitle()}">Clip Title</a></td>
+                    <td >Preview Image </td>
+
+                <!-- <td th:text="${stat}"></td>
                 <td th:text="${#lists.size(videoList)}">[Engine Size]</td>
-                 td th:text="${video.refNo}">First Name</td>
-             <td th:text="${video.title}">Last Name</td-->
+                td th:text="${video.refNo}">First Name</td>
+                <td th:text="${video.title}">Last Name</td-->
+
             </tr>
-           </table>
+
+        </table>
 
 <div id="svp_playerEc" style="width:720px;height:810px;position:relative;"></div>
 <script language="javascript" type="text/javascript" src="//play.streamingvideoprovider.com/js/dplayer.js"></script>
 
  <script th:inline="javascript">
 /*<![CDATA[*/
- 
-    var clipKey = /*[[${message}]];*/'21jcgp5rn3dw';
+
+    var clipKey = [[${clipKey}]];
+
     var vars = {clip_id:clipKey,transparent:"true",pause:"1",repeat:"",bg_color:"#ffffff",fs_mode:"2",no_controls:"",start_img:"0",start_volume:"100",close_button:"",brand_new_window:"1",auto_hide:"1",stretch_video:"",player_align:"NONE",offset_x:"0",offset_y:"0",player_color_ratio:0.6,skinAlpha:"50",colorBase:"#250864",colorIcon:"#ffffff",colorHighlight:"#7f54f8",direct:"false",is_responsive:"true",viewers_limit:0,cc_position:"bottom",cc_positionOffset:70,cc_multiplier:0.03,cc_textColor:"#ffffff",cc_textOutlineColor:"#ffffff",cc_bkgColor:"#000000",cc_bkgAlpha:0.1,aspect_ratio:"16:9",play_button:"1",play_button_style:"pulsing",sleek_player:"1"};
         var svp_player = new SVPDynamicPlayer("svp_playerEc", "", "100%", "100%", {use_div:"svp_playerEc",skin:"3"}, vars);
         svp_player.execute();
 
- /*]]>*/
+/*]]>*/
 </script>
 <noscript>Your browser does not support JavaScript! JavaScript is needed to display this video player!</noscript>
 </div>-

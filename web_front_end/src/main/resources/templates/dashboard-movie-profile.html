@@ -4,12 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{/style.css}">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
 		
-		<link rel="stylesheet" href="icons/fontawesome/css/fontawesome-all.min.css"><!-- FontAwesome Icons -->
-		<link rel="stylesheet" href="icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css"><!-- iconsmind.com Icons -->
+		<link rel="stylesheet" th:href="@{/icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
+		<link rel="stylesheet" th:href="@{/icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
 		
 		
 		<title>SKRN - Media Streaming App</title>
@@ -18,7 +18,7 @@
 		<div id="sidebar-bg">
 			
       <header id="videohead-pro" class="sticky-header">
-			<div id="video-logo-background"><a href="/dashboardHome"><img src="images/logo-video-layout.png" alt="Logo"></a></div>
+        <div id="video-logo-background"><a href="/dashboardHome"><img th:src="@{/images/logo-video-layout.png}" alt="Logo"></a></div>
 			
 			<div id="video-search-header">
 				<div id="search-icon-more"></div>
@@ -149,27 +149,7 @@
 					</ul>
 				</div><!-- close #header-user-profile-menu -->
 			</div><!-- close #header-user-profile -->
-			
-			<div id="header-user-notification">
-				<div id="header-user-notification-click" class="noselect">
-					<i class="far fa-bell"></i>
-					<span class="user-notification-count">3</span>
-				</div><!-- close #header-user-profile-click -->
-				<div id="header-user-notification-menu">
-					<h3>Notifications</h3>
-					<div id="header-notification-menu-padding">
-							<ul id="header-user-notification-list">
-								<li><a href="#!"><img src="images/demo/user-profile-2.jpg" alt="Profile">Lorem ipsum dolor sit amet, consec tetur adipiscing elit. <div class="header-user-notify-time">21 hours ago</div></a></li>
-								<li><a href="#!"><img src="images/demo/user-profile-3.jpg" alt="Profile">Donec vitae lacus id arcu molestie mollis. <div class="header-user-notify-time">3 days ago</div></a></li>
-								<li><a href="#!"><img src="images/demo/user-profile-4.jpg" alt="Profile">Aenean vitae lectus non purus facilisis imperdiet. <div class="header-user-notify-time">5 days ago</div></a></li>
-							</ul>
-							<div class="clearfix"></div>
-						</div><!-- close #header-user-profile-menu -->
-					</div>
-			</div><!-- close #header-user-notification -->
-			
-			
-			
+
 			<div class="clearfix"></div>
 			
 			<nav id="mobile-navigation-pro">
@@ -270,7 +250,7 @@
 			</div>
 			
 			<div class="content-sidebar-section">
-				<h2 class="content-sidebar-sub-header">True Blood</h2>
+				<h2 class="content-sidebar-sub-header" th:text=${clipKey}>Title</h2>
 				<ul class="progression-studios-slider-rating">
 					<li>PG-13</li><li>HD</li>
 				</ul>
@@ -621,20 +601,19 @@ Thor</a></h6>
 		</div><!-- close #sidebar-bg-->
 		
 		<!-- Required Framework JavaScript -->
-		<script src="js/libs/jquery-3.3.1.min.js"></script><!-- jQuery -->
-		<script src="js/libs/popper.min.js" defer></script><!-- Bootstrap Popper/Extras JS -->
-		<script src="js/libs/bootstrap.min.js" defer></script><!-- Bootstrap Main JS -->
+		<script th:src="@{/js/libs/jquery-3.3.1.min.js}"></script><!-- jQuery -->
+		<script th:src="@{/js/libs/popper.min.js}" defer></script><!-- Bootstrap Popper/Extras JS -->
+		<script th:src="@{/js/libs/bootstrap.min.js}" defer></script><!-- Bootstrap Main JS -->
 		<!-- All JavaScript in Footer -->
 		
 		<!-- Additional Plugins and JavaScript -->
-		<script src="js/navigation.js" defer></script><!-- Header Navigation JS Plugin -->
-		<script src="js/jquery.flexslider-min.js" defer></script><!-- FlexSlider JS Plugin -->
-		<script src="js/jquery-asRange.min.js" defer></script><!-- Range Slider JS Plugin -->
-		<script src="js/circle-progress.min.js" defer></script><!-- Circle Progress JS Plugin -->
-		<script src="js/afterglow.min.js" defer></script><!-- Video Player JS Plugin -->
-		<script src="js/script.js" defer></script><!-- Custom Document Ready JS -->
-		<script src="js/script-dashboard.js" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
-		
-		
-	</body>
+		<script th:src="@{/js/navigation.js}" defer></script><!-- Header Navigation JS Plugin -->
+		<script th:src="@{/js/jquery.flexslider-min.js}" defer></script><!-- FlexSlider JS Plugin -->
+		<script th:src="@{/js/jquery-asRange.min.js}" defer></script><!-- Range Slider JS Plugin -->
+		<script th:src="@{/js/circle-progress.min.js}" defer></script><!-- Circle Progress JS Plugin -->
+		<script th:src="@{/js/afterglow.min.js}" defer></script><!-- Video Player JS Plugin -->
+		<script th:src="@{/js/script.js}" defer></script><!-- Custom Document Ready JS -->
+        <script th:src="@{/js/script-dashboard.js}" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
+
+    </body>
 </html>
