@@ -50,10 +50,11 @@
              <td>Title</td>
              
             </tr>
-            <tr th:each="video , stat: ${videoList.videoList}">
-                <td th:text="${stat}"></td>
-                <!--td th:text="${#lists.size(videoList)}">[Engine Size]</td>
-             <td th:text="${video.refNo}">First Name</td>
+            <tr th:each="video , stat: ${videoList.getVideoList()}">
+                <td th:text="${video.getTitle()}"></td>
+             <!-- <td th:text="${stat}"></td>
+                <td th:text="${#lists.size(videoList)}">[Engine Size]</td>
+                 td th:text="${video.refNo}">First Name</td>
              <td th:text="${video.title}">Last Name</td-->
             </tr>
            </table>

@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import com.okta.spring.example.services.StreamProviderService;
-import com.okta.spring.example.services.Video;
-import com.okta.spring.example.services.VideoList;
+import com.okta.spring.example.xmldto.ResponseMsg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +26,9 @@ public class HomeController {
 
     @RequestMapping("/getVideoList")
     @ResponseBody
-    public VideoList  getVideoListJson() {
+    public ResponseMsg  getVideoListJson() {
+        
+
         return streamProviderService.getVideoList();
     }
 
