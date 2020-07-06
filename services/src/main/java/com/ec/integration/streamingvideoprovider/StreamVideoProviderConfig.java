@@ -1,5 +1,8 @@
 package com.ec.integration.streamingvideoprovider;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupMsg;
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.PasswordPayload;
@@ -13,13 +16,17 @@ import com.ec.vivo.config.ApplicationProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.trace.http.HttpTrace.Response;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
-
+import org.apache.commons.io.IOUtils;
+import org.springframework.stereotype.Controller;
 
 
 @Component
@@ -37,6 +44,18 @@ public class StreamVideoProviderConfig {
      
         return response.getBody();
     }
+
+    //imageType:thumb,large
+public byte[] getImageWithMediaType(String videoRef, String imageType)  throws IOException {
+    
+    String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
+    String url = applicationProperties.getSvpbaseUrl()+applicationProperties.getSvpgetprimaryvideoimage()+"&token="+token+"&video_ref="+ videoRef  +"&type=" +imageType ;
+    System.out.println(url);
+    HttpResponse<byte[]> response = Unirest.get(url).asBytes();
+    //System.out.println(response.getBody());
+    //final InputStream in = getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg");
+    return response.getBody();
+}
 
     public String  getPpvPackages(){
         String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");

@@ -26,12 +26,14 @@ public class ApplicationProperties {
     private String svptokenservice;
     private String svpvideoplaylistservice;
     private String svplistppvpackages;
-    private String svplistvideos;
+    private String svpgetprimaryvideoimage;
     private String svpcreatepasswordpackage;
     private String svpcreateppvpackage;
     private String svplistpasswordpackage;
     private String svpsetvideopasswordpackage;
     private String svpaddgrouppassword;
+    private String svplistvideos;
+
 
     public ApplicationProperties(){}
 
@@ -129,6 +131,14 @@ public class ApplicationProperties {
 
     public void setSvpaddgrouppassword(String svpaddgrouppassword) {
         this.svpaddgrouppassword = svpaddgrouppassword;
+    }
+
+    public String getSvpgetprimaryvideoimage() {
+        return svpgetprimaryvideoimage;
+    }
+
+    public void setSvpgetprimaryvideoimage(String svpgetprimaryvideoimage) {
+        this.svpgetprimaryvideoimage = svpgetprimaryvideoimage;
     }
 
     
