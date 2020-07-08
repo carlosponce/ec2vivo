@@ -58,6 +58,8 @@ public class Video implements Serializable {
     @XmlElement(name="file_size")
     private String fileSize;
 
+    private byte[] image;
+
     public String getRefNo() {
         return refNo;
     }
@@ -160,6 +162,14 @@ public class Video implements Serializable {
 
     public void setFileSize(String fileSize) {
         this.fileSize = fileSize;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
 

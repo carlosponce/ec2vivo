@@ -37,8 +37,6 @@ public class HomeController {
         return "home";
     }
 
-
-
     @RequestMapping("/home/getVideoList/{clipKey}")
     public String getVideoListDetail(@PathVariable("clipKey") String clipKey, Model model) {
         model.addAttribute("clipKey", clipKey);
