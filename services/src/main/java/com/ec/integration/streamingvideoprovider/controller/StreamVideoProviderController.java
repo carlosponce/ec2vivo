@@ -2,15 +2,14 @@ package com.ec.integration.streamingvideoprovider.controller;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import com.ec.integration.streamingvideoprovider.StreamVideoProviderConfig;
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.PasswordPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.ResponseMsg;
 import com.ec.integration.streamingvideoprovider.message.xmldto.TicketPayload;
-import com.ec.integration.streamingvideoprovider.message.xmldto.Video;
 import com.ec.integration.streamingvideoprovider.message.xmldto.VideoPasswordPayload;
+import com.nimbusds.jose.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,7 +46,7 @@ public class StreamVideoProviderController {
         return config.getListVideos();
     }
 
-    @GetMapping(value = "/getPrimaryVideoImage", produces = MediaType.IMAGE_JPEG_VALUE)
+    /*@GetMapping(value = "/getPrimaryVideoImage", produces = MediaType.IMAGE_JPEG_VALUE)
     public @ResponseBody byte[] getPrimaryVideoImage(String videoRef, String imageType) {
         try {
             return config.getImageWithMediaType(videoRef, imageType);
@@ -56,7 +55,40 @@ public class StreamVideoProviderController {
             e.printStackTrace();
             return null;
         }
+    }*/
+
+    @GetMapping(value = "/getPrimaryVideoImage", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]>  getPrimaryVideoImage(String videoRef, String imageType) {
+        try {
+            return ResponseEntity
+            .ok()
+            .contentType(MediaType.IMAGE_JPEG).body(config.getImageWithMediaType(videoRef, imageType));
+        } catch (IOException e) {
+            System.out.println("### NO se pudo obtener la imagen!");
+            e.printStackTrace();
+            return ResponseEntity.badRequest().contentType(MediaType.IMAGE_JPEG).body(null);
+        }
     }
+
+    @GetMapping(value = "/getPrimaryVideoImageBase64")
+    public ResponseEntity<String>  getPrimaryVideoImageBase64(String videoRef, String imageType) {
+        try {
+
+            String jsonbas64StringVideo = java.util.Base64.getMimeEncoder().encodeToString(config.getImageWithMediaType(videoRef, imageType));
+
+            //String jsonStringVideo = Base64.encode(config.getImageWithMediaType(videoRef, imageType)).toJSONString();
+
+            return ResponseEntity
+                .ok().body(jsonbas64StringVideo);
+
+        } catch (IOException e) {
+            System.out.println("### NO se pudo obtener la imagen!");
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+
 
     @GetMapping(value = "/getListVideosJson")
     public ResponseMsg getListVideosJson() {
