@@ -31,8 +31,30 @@ public class StreamProviderService {
         }
 
         return videoList;
-
     }
+
+    public ResponseMsg getVideobyRefNo(String refNo) {
+
+        final String uri = base_uri + "/getVideobyRefNo?refNo=" + refNo;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String stringJsonResponse = restTemplate.getForObject(uri, String.class);
+
+        System.out.println("getVideobyRefNo:" + refNo +  ":\n" + stringJsonResponse);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ResponseMsg videoList;
+
+        try {
+            videoList = objectMapper.readValue(stringJsonResponse, ResponseMsg.class);
+        } catch (JsonProcessingException e) {
+            videoList = new ResponseMsg();
+            e.printStackTrace();
+        }
+
+        return videoList;
+    }
+
 
     public byte[] getThumbailVideoImage(String videoRef) {
         return getVideoImage(videoRef,"thumb");
@@ -49,6 +71,13 @@ public class StreamProviderService {
         byte[] byteArrayResponse = restTemplate.getForObject(uri, byte[].class);
 
         return byteArrayResponse;
+    }
+
+    public String getVideoImageBase64(String videoRef, String type){
+        final String uri = base_uri + "/getPrimaryVideoImageBase64?videoRef="+videoRef+"&type=" + type;
+
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(uri, String.class);
 
     }
 

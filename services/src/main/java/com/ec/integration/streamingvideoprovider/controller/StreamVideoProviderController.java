@@ -46,16 +46,15 @@ public class StreamVideoProviderController {
         return config.getListVideos();
     }
 
-    /*@GetMapping(value = "/getPrimaryVideoImage", produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getPrimaryVideoImage(String videoRef, String imageType) {
-        try {
-            return config.getImageWithMediaType(videoRef, imageType);
-        } catch (IOException e) {
-            System.out.println("### NO se pudo obtener la imagen!");
-            e.printStackTrace();
-            return null;
-        }
-    }*/
+    @GetMapping(value = "/getListVideosJson")
+    public ResponseMsg getListVideosJson() {
+        return config.getListVideosJson();
+    }
+
+    @GetMapping(value = "/getVideobyRefNo")
+    public ResponseMsg getVideobyRefNo(String refNo) {
+        return config.getVideobyRefNo(refNo);
+    }
 
     @GetMapping(value = "/getPrimaryVideoImage", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]>  getPrimaryVideoImage(String videoRef, String imageType) {
@@ -76,8 +75,6 @@ public class StreamVideoProviderController {
 
             String jsonbas64StringVideo = java.util.Base64.getMimeEncoder().encodeToString(config.getImageWithMediaType(videoRef, imageType));
 
-            //String jsonStringVideo = Base64.encode(config.getImageWithMediaType(videoRef, imageType)).toJSONString();
-
             return ResponseEntity
                 .ok().body(jsonbas64StringVideo);
 
@@ -86,13 +83,6 @@ public class StreamVideoProviderController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(null);
         }
-    }
-
-
-
-    @GetMapping(value = "/getListVideosJson")
-    public ResponseMsg getListVideosJson() {
-        return config.getListVideosJson();
     }
 
     @GetMapping(value = "/getVideoImages", produces = MediaType.IMAGE_JPEG_VALUE)

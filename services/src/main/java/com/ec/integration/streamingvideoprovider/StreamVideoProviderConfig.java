@@ -124,6 +124,22 @@ public class StreamVideoProviderConfig {
         return rp;
     }
 
+    public ResponseMsg getVideobyRefNo(String refNo) {
+        String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
+        String url = applicationProperties.getSvpbaseUrl() + applicationProperties.getSvplistvideos() + "&token="
+                + token + "&start_ref_no=" + refNo + "&end_ref_no=" + refNo;
+  //      System.out.println(url);
+
+        HttpResponse<String> response = Unirest.get(url).asString();
+
+//        System.out.println(response.getBody());
+
+        ResponseMsg rp = XmlUtil.unmarshall(response.getBody(), ResponseMsg.class);
+        return rp;
+
+    }
+
+
     public String createPasswordPackage(GroupPayload groupInfo) {
         System.out.println("inside createPasswordPackage config");
         String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");

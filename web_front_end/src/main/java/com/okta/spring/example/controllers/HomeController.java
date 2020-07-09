@@ -43,9 +43,15 @@ public class HomeController {
         return getVideoList(model);
     }
 
-    @RequestMapping("/dashboardMovieProfile/{clipKey}")
-    public String dashboardMovieProfile(@PathVariable("clipKey") String clipKey, Model model) {
-        model.addAttribute("clipKey", clipKey);
+    @RequestMapping("/dashboardMovieProfile/{refNo}")
+    public String dashboardMovieProfile(@PathVariable("refNo") String refNo, Model model) {
+        ResponseMsg respMesg = streamProviderService.getVideobyRefNo(refNo);
+
+        String videoImgBase64 = streamProviderService.getVideoImageBase64(refNo,"thumb");
+
+        model.addAttribute("respMesg", respMesg);
+        model.addAttribute("videoImgBase64Thumb", videoImgBase64);
+
         return "dashboard-movie-profile";
     }
 
