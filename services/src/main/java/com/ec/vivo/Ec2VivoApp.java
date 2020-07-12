@@ -10,7 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
@@ -23,7 +25,7 @@ import java.util.Collection;
 @SpringBootApplication
 @EnableConfigurationProperties({ApplicationProperties.class})
 @ComponentScan("com.ec")
-public class Ec2VivoApp {
+public class Ec2VivoApp extends SpringBootServletInitializer{
 
     private static final Logger log = LoggerFactory.getLogger(Ec2VivoApp.class);
 
@@ -65,6 +67,11 @@ public class Ec2VivoApp {
         logApplicationStartup(env);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Ec2VivoApp.class);
+    }
+
     private static void logApplicationStartup(Environment env) {
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {
@@ -75,7 +82,9 @@ public class Ec2VivoApp {
         if (StringUtils.isBlank(contextPath)) {
             contextPath = "/";
         }
+
         String hostAddress = "localhost";
+
         try {
             hostAddress = InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {

@@ -16,6 +16,9 @@
 package com.okta.spring.example.controllers;
 
 import com.okta.spring.boot.oauth.config.OktaOAuth2Properties;
+import com.okta.spring.example.config.ApplicationProperties;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +40,10 @@ public class LoginController {
     private static final String ISSUER_URI = "issuerUri";
 
     private final OktaOAuth2Properties oktaOAuth2Properties;
+    
+    @Autowired
+    ApplicationProperties applicationProperties;
+
 
     public LoginController(OktaOAuth2Properties oktaOAuth2Properties) {
         this.oktaOAuth2Properties = oktaOAuth2Properties;
@@ -63,11 +70,14 @@ public class LoginController {
         mav.addObject(OKTA_BASE_URL, orgUrl);
         mav.addObject(OKTA_CLIENT_ID, oktaOAuth2Properties.getClientId());
         // from ClientRegistration.redirectUriTemplate, if the template is change you must update this
-        //mav.addObject(REDIRECT_URI,
-         //   request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +
-         //   request.getContextPath() + oktaOAuth2Properties.getRedirectUri()
-         mav.addObject(REDIRECT_URI,oktaOAuth2Properties.getRedirectUri());
+        //String str_redir_uri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
+        String str_redir_uri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
+        //String str_redir_uri = request.getScheme() + "://" + applicationProperties.getName() + ":" + applicationProperties.getPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
 
+        //String str_redir_uri = oktaOAuth2Properties.getRedirectUri();
+        //System.out.println("applicationProperties:" + applicationProperties.getName());
+
+        mav.addObject(REDIRECT_URI, str_redir_uri);
         mav.addObject(ISSUER_URI, issuer);
 
         return mav;

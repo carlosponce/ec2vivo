@@ -32,16 +32,16 @@
 
 var config = {};
 
-config.baseUrl = /*[[${oktaBaseUrl}]]*/ 'https://{yourOktaDomain}';
-config.clientId = /*[[${oktaClientId}]]*/ '{clientId}';
-config.redirectUri = /*[[${redirectUri}]]*/ '{redirectUri}';
+config.baseUrl = [[${oktaBaseUrl}]]; /*'https://{yourOktaDomain}';*/
+config.clientId = [[${oktaClientId}]]; /* '{clientId}';*/
+config.redirectUri = [[${redirectUri}]]; /*'{redirectUri}';*/
 config.logo = 'https://spring.io/img/homepage/icon-spring-cloud.svg';
 config.authParams = {
-  issuer: /*[[${issuerUri}]]*/ '{issuerUri}',
+  issuer: [[${issuerUri}]], /*'{issuerUri}',*/
   responseType: 'code',
-  state: /*[[${state}]]*/ '{state}' || false,
-  nonce: /*[[${nonce}]]*/ '{nonce}',
-  scopes: /*[[${scopes}]]*/ '[scopes]',
+  state: [[${state}]], /*'{state}' || false,*/
+  nonce: [[${nonce}]], /*'{nonce}',*/
+  scopes: [[${scopes}]], /*'[scopes]',*/
   display: 'page'
 };
 config.registration= {

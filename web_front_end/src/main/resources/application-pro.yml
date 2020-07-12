@@ -1,0 +1,24 @@
+server:
+  name: www.vivelo.tv
+  port: 80
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          okta:
+            authorization-uri: http://${server.name}:${server.port}/custom-login
+            user-name-attribute: email
+
+okta:
+  oauth2:
+    issuer: https://dev-271413.okta.com/oauth2/default
+    clientId: 0oak85iu6IokRnvSX4x6
+    clientSecret: 3ofqZLeJFr_IZCB9j7Kt3QvclrcHB_NAzv1eWLXg
+    redirect-uri: /authorization-code/callback
+    postLogoutRedirectUri: http://${server.name}:${server.port}/
+    scopes:
+    - openid
+    - email
+    - profile
