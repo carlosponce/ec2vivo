@@ -63,10 +63,11 @@ public class LoginController {
         mav.addObject(OKTA_BASE_URL, orgUrl);
         mav.addObject(OKTA_CLIENT_ID, oktaOAuth2Properties.getClientId());
         // from ClientRegistration.redirectUriTemplate, if the template is change you must update this
-        mav.addObject(REDIRECT_URI,
-            request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +
-            request.getContextPath() + oktaOAuth2Properties.getRedirectUri()
-        );
+        //mav.addObject(REDIRECT_URI,
+         //   request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() +
+         //   request.getContextPath() + oktaOAuth2Properties.getRedirectUri()
+         mav.addObject(REDIRECT_URI,oktaOAuth2Properties.getRedirectUri());
+
         mav.addObject(ISSUER_URI, issuer);
 
         return mav;

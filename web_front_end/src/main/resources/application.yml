@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 80
 
 spring:
   security:
@@ -7,16 +7,16 @@ spring:
       client:
         provider:
           okta:
-            authorization-uri: http://localhost:${server.port}/custom-login
+            authorization-uri: http://vivelo.tv/custom-login
             user-name-attribute: email
 
 okta:
   oauth2:
     issuer: https://dev-271413.okta.com/oauth2/default
-    clientId: 0oafem8k4O49jU0tM4x6
-    clientSecret: YMohoBRPrEx4e5RHyeeQDqrulNZ5x8365lPhIuB2
-    redirect-uri: /authorization-code/callback
-    postLogoutRedirectUri: http://localhost:${server.port}/
+    clientId: 0oak85iu6IokRnvSX4x6
+    clientSecret: 3ofqZLeJFr_IZCB9j7Kt3QvclrcHB_NAzv1eWLXg
+    redirect-uri: http://vivelo.tv/
+    postLogoutRedirectUri: http://vivelo.tv/
     scopes:
     - openid
     - email
