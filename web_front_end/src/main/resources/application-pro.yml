@@ -1,6 +1,7 @@
 server:
   name: www.vivelo.tv
   port: 80
+  includePortInOauth2RedirectUri: false
 
 spring:
   security:

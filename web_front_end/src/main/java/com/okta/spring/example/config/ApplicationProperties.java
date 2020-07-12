@@ -16,6 +16,7 @@ public class ApplicationProperties {
 
     private String name;
     private String port;
+    private Boolean includePortInOauth2RedirectUri;
 
     public ApplicationProperties(){}
 
@@ -33,6 +34,14 @@ public class ApplicationProperties {
 
     public void setPort(String port) {
         this.port = port;
+    }
+
+    public Boolean getIncludePortInOauth2RedirectUri() {
+        return includePortInOauth2RedirectUri;
+    }
+
+    public void setIncludePortInOauth2RedirectUri(Boolean includePortInOauth2RedirectUri) {
+        this.includePortInOauth2RedirectUri = includePortInOauth2RedirectUri;
     }
 
 }

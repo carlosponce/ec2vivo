@@ -69,25 +69,34 @@ public class LoginController {
         mav.addObject(SCOPES, oktaOAuth2Properties.getScopes());
         mav.addObject(OKTA_BASE_URL, orgUrl);
         mav.addObject(OKTA_CLIENT_ID, oktaOAuth2Properties.getClientId());
+
         // from ClientRegistration.redirectUriTemplate, if the template is change you must update this
         //String str_redir_uri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
-        String str_redir_uri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
-        //String str_redir_uri = request.getScheme() + "://" + applicationProperties.getName() + ":" + applicationProperties.getPort() + request.getContextPath() + oktaOAuth2Properties.getRedirectUri();
+        StringBuilder   strbRedirectUrl = new StringBuilder();
 
-        //String str_redir_uri = oktaOAuth2Properties.getRedirectUri();
-        //System.out.println("applicationProperties:" + applicationProperties.getName());
+        strbRedirectUrl.append(request.getScheme());
+        strbRedirectUrl.append("://");
+        strbRedirectUrl.append(request.getServerName());
 
-        mav.addObject(REDIRECT_URI, str_redir_uri);
+        if(applicationProperties.getIncludePortInOauth2RedirectUri()){
+            strbRedirectUrl.append(":");
+            strbRedirectUrl.append(request.getServerPort());
+        }
+
+        strbRedirectUrl.append(request.getContextPath());
+        strbRedirectUrl.append(oktaOAuth2Properties.getRedirectUri());
+
+        mav.addObject(REDIRECT_URI, strbRedirectUrl.toString());
         mav.addObject(ISSUER_URI, issuer);
 
         return mav;
     }
 
-     @GetMapping("/post-logout")
+    @GetMapping("/post-logout")
     public String logout() {
         return "index";
     }
-    
+
     @GetMapping("/403")
     public String error403() {
         return "403";

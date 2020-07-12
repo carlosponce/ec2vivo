@@ -1,6 +1,7 @@
 server:
   name: localhost
   port: 9090
+  includePortInOauth2RedirectUri: true
 
 spring:
   security:
