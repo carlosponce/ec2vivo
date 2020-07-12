@@ -253,7 +253,7 @@
 					<div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="video , stat: ${videoList.getVideoList()}">
 
 						<div class="item-listing-container-skrn">
-							<a href="/dashboardMovieProfile"><img src="http://via.placeholder.com/500x707" alt="Listing"></a>
+							<a href="/dashboardMovieProfile"><img src="https://via.placeholder.com/500x707" alt="Listing"></a>
 							<div class="item-listing-text-skrn">
 
 								<div class="item-listing-text-skrn-vertical-align"><h6><a th:href="@{/dashboardMovieProfile/{clipKey}(clipKey=${video.getClipKey()})}"  th:text="${video.getTitle()}">Title</a></h6>
