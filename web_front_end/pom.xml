@@ -24,9 +24,9 @@
     </parent>
 
     <groupId>com.example.okta</groupId>
-    <artifactId>okta-spring-boot-oauth-code-flow-custom-login-example</artifactId>
+    <artifactId>vivelo-pilot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Okta :: Samples :: Spring Boot :: Code Flow + Custom Login Page</name>
     <description>Okta OAuth 2.0 w/ Spring Boot Example + Custom Login Page</description>
@@ -39,6 +39,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

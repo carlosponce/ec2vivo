@@ -19,6 +19,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +36,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-public class HostedLoginCodeFlowExampleApplication {
+public class HostedLoginCodeFlowExampleApplication  extends SpringBootServletInitializer{
 
     private final Logger logger = LoggerFactory.getLogger(HostedLoginCodeFlowExampleApplication.class);
 
@@ -42,6 +44,11 @@ public class HostedLoginCodeFlowExampleApplication {
         SpringApplication.run(HostedLoginCodeFlowExampleApplication.class, args);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(HostedLoginCodeFlowExampleApplication.class);
+    }
+    
     /**
      * Create an ApplicationListener that listens for successful logins and simply just logs the principal name.
      * @return a new listener
