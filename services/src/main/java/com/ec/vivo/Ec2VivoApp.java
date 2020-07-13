@@ -10,9 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
@@ -25,7 +23,7 @@ import java.util.Collection;
 @SpringBootApplication
 @EnableConfigurationProperties({ApplicationProperties.class})
 @ComponentScan("com.ec")
-public class Ec2VivoApp extends SpringBootServletInitializer{
+public class Ec2VivoApp {
 
     private static final Logger log = LoggerFactory.getLogger(Ec2VivoApp.class);
 
@@ -65,11 +63,6 @@ public class Ec2VivoApp extends SpringBootServletInitializer{
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Ec2VivoApp.class);
     }
 
     private static void logApplicationStartup(Environment env) {
