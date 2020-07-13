@@ -2,6 +2,9 @@ server:
   name: localhost
   port: 9090
   includePortInOauth2RedirectUri: true
+  streamingServiceServer: localhost
+  streamingServicePort: 8080
+  streamingServiceUri: http://${server.streamingServiceServer}:${server.streamingServicePort}/api/streamvideoprovider
 
 spring:
   security:

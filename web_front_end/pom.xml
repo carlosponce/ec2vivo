@@ -24,12 +24,11 @@
     </parent>
 
     <groupId>com.example.okta</groupId>
-    <artifactId>vivelo-pilot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>vivelo-piloto</artifactId>
+    <version>0.0.1</version>
     <packaging>war</packaging>
 
-    <name>Okta :: Samples :: Spring Boot :: Code Flow + Custom Login Page</name>
-    <description>Okta OAuth 2.0 w/ Spring Boot Example + Custom Login Page</description>
+    <name>Vivelo Web Front End</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

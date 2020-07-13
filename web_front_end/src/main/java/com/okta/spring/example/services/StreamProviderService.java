@@ -2,19 +2,23 @@ package com.okta.spring.example.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.okta.spring.example.config.ApplicationProperties;
 import com.okta.spring.example.xmldto.ResponseMsg;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
 public class StreamProviderService {
 
-    private final String base_uri = "http://localhost:8080/api/streamvideoprovider";
+    @Autowired
+    ApplicationProperties applicationProperties;
 
     public ResponseMsg getVideoList() {
 
-        final String uri = base_uri + "/getListVideosJson";
-
+        final String uri = applicationProperties.getStreamingServiceUri() + "/getListVideosJson";
+        System.out.println("URI streaming service: " + uri);
         RestTemplate restTemplate = new RestTemplate();
         String stringJsonResponse = restTemplate.getForObject(uri, String.class);
 
@@ -35,7 +39,7 @@ public class StreamProviderService {
 
     public ResponseMsg getVideobyRefNo(String refNo) {
 
-        final String uri = base_uri + "/getVideobyRefNo?refNo=" + refNo;
+        final String uri = applicationProperties.getStreamingServiceUri() + "/getVideobyRefNo?refNo=" + refNo;
 
         RestTemplate restTemplate = new RestTemplate();
         String stringJsonResponse = restTemplate.getForObject(uri, String.class);
@@ -65,7 +69,7 @@ public class StreamProviderService {
     }
 
     private byte[] getVideoImage(String videoRef, String type){
-        final String uri = base_uri + "/getPrimaryVideoImage?videoRef="+videoRef+"&type=" + type;
+        final String uri = applicationProperties.getStreamingServiceUri() + "/getPrimaryVideoImage?videoRef="+videoRef+"&type=" + type;
 
         RestTemplate restTemplate = new RestTemplate();
         byte[] byteArrayResponse = restTemplate.getForObject(uri, byte[].class);
@@ -74,7 +78,7 @@ public class StreamProviderService {
     }
 
     public String getVideoImageBase64(String videoRef, String type){
-        final String uri = base_uri + "/getPrimaryVideoImageBase64?videoRef="+videoRef+"&type=" + type;
+        final String uri = applicationProperties.getStreamingServiceUri() + "/getPrimaryVideoImageBase64?videoRef="+videoRef+"&type=" + type;
 
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(uri, String.class);

@@ -48,6 +48,16 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: https://dev-271413.okta.com/oauth2/default
+        registration:
+          oidc:
+            client-id: 0oafem8k4O49jU0tM4x6
+            client-secret: YMohoBRPrEx4e5RHyeeQDqrulNZ5x8365lPhIuB2
 
 server:
   port: 8080

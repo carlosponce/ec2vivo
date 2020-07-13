@@ -13,6 +13,43 @@
 # Full reference is available at:
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
+spring:
+  application:
+    name: ec2vivo
+  profiles:
+    active: dev
+  jmx:
+    enabled: false
+  messages:
+    basename: i18n/messages
+  main:
+    allow-bean-definition-overriding: true
+  task:
+    execution:
+      thread-name-prefix: ec-2-vivo-task-
+      pool:
+        core-size: 2
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: ec-2-vivo-scheduling-
+      pool:
+        size: 2
+  thymeleaf:
+    mode: HTML
+  output:
+    ansi:
+      console-available: true
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc:
+            issuer-uri: https://dev-271413.okta.com/oauth2/default
+        registration:
+          oidc:
+            client-id: 0oafem8k4O49jU0tM4x6
+            client-secret: YMohoBRPrEx4e5RHyeeQDqrulNZ5x8365lPhIuB2
 
 management:
   endpoints:
@@ -57,47 +94,6 @@ management:
           autotime:
             enabled: true
 
-spring:
-  application:
-    name: ec2vivo
-  profiles:
-    # The commented value for `active` can be replaced with valid Spring profiles to load.
-    # Otherwise, it will be filled in by maven when building the JAR file
-    # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
-    active: #spring.profiles.active#
-  jmx:
-    enabled: false
-  messages:
-    basename: i18n/messages
-  main:
-    allow-bean-definition-overriding: true
-  task:
-    execution:
-      thread-name-prefix: ec-2-vivo-task-
-      pool:
-        core-size: 2
-        max-size: 50
-        queue-capacity: 10000
-    scheduling:
-      thread-name-prefix: ec-2-vivo-scheduling-
-      pool:
-        size: 2
-  thymeleaf:
-    mode: HTML
-  output:
-    ansi:
-      console-available: true
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: https://dev-271413.okta.com/oauth2/default
-        registration:
-          oidc:
-            client-id: 0oafem8k4O49jU0tM4x6
-            client-secret: YMohoBRPrEx4e5RHyeeQDqrulNZ5x8365lPhIuB2
-
 server:
   servlet:
     session:
@@ -107,7 +103,7 @@ server:
 # Properties to be exposed on the /info management endpoint
 info:
   # Comma separated list of profiles that will trigger the ribbon to show
-  display-ribbon-on-profiles: 'dev'
+  display-ribbon-on-profiles: 'dev,prod'
 
 # ===================================================================
 # JHipster specific properties

@@ -17,6 +17,9 @@ public class ApplicationProperties {
     private String name;
     private String port;
     private Boolean includePortInOauth2RedirectUri;
+    private String streamingServiceUri;
+    private String streamingServiceServer;
+    private String streamingServicePort;
 
     public ApplicationProperties(){}
 
@@ -42,6 +45,30 @@ public class ApplicationProperties {
 
     public void setIncludePortInOauth2RedirectUri(Boolean includePortInOauth2RedirectUri) {
         this.includePortInOauth2RedirectUri = includePortInOauth2RedirectUri;
+    }
+
+    public String getStreamingServiceUri() {
+        return streamingServiceUri;
+    }
+
+    public void setStreamingServiceUri(String streamingServiceUri) {
+        this.streamingServiceUri = streamingServiceUri;
+    }
+
+    public String getStreamingServiceServer() {
+        return streamingServiceServer;
+    }
+
+    public void setStreamingServiceServer(String streamingServiceServer) {
+        this.streamingServiceServer = streamingServiceServer;
+    }
+
+    public String getStreamingServicePort() {
+        return streamingServicePort;
+    }
+
+    public void setStreamingServicePort(String streamingServicePort) {
+        this.streamingServicePort = streamingServicePort;
     }
 
 }

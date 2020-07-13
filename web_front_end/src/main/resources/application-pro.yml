@@ -2,6 +2,9 @@ server:
   name: www.vivelo.tv
   port: 443
   includePortInOauth2RedirectUri: false
+  streamingServiceServer: www.vivelo.tv
+  streamingServicePort: 443
+  streamingServiceUri: https://${server.streamingServiceServer}:${server.streamingServicePort}/api/streamvideoprovider
 
 spring:
   security:
