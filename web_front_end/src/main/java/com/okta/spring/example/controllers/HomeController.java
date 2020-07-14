@@ -50,6 +50,9 @@ public class HomeController {
         String videoImgBase64 = streamProviderService.getVideoImageBase64(refNo,"thumb");
 
         model.addAttribute("respMesg", respMesg);
+
+        if(respMesg.getVideoList() != null && respMesg.getVideoList().size() > 0)   model.addAttribute("clipKey", respMesg.getVideoList().get(0).getClipKey());
+
         model.addAttribute("videoImgBase64Thumb", videoImgBase64);
 
         return "dashboard-movie-profile";
