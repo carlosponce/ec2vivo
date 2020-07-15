@@ -74,17 +74,14 @@
                                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                                     <a href="#" onclick="document.getElementById('logoutForm').submit();"><span class="icon-Power-3"></span>Cerrar Sesión</a>
                                 </form>
-        
                                 </li>
                         </ul>
                     </div><!-- close #header-user-profile-menu -->
                 </div><!-- close #header-user-profile -->
-                
-              
 
 				<div class="clearfix"></div>
 			</div><!-- close .container -->
-			
+
 			<nav id="mobile-navigation-pro">
 			
 				<ul id="mobile-menu-pro">
@@ -113,14 +110,11 @@
 				</ul>
 				<div class="clearfix"></div>
 			
-                <button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
+                <button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Iniciar Sesión</button>
                 
 			</nav>
 		</header>
-		
-		
-		
-		
+
 		<div class="flexslider progression-studios-slider">
 	      <ul class="slides">
 				<li class="progression_studios_animate_in">
@@ -150,9 +144,7 @@
 					<div class="progression-studios-slider-image-background" style="background-image:url(https://via.placeholder.com/1920x693/000000);">
 						<div class="progression-studios-slider-display-table">
 							<div class="progression-studios-slider-vertical-align">
-								
 								<div class="container">
-									
 									<div class="progression-studios-slider-caption-width">
 										<div class="progression-studios-slider-caption-align">
 											<h2 style="color:#d5ddd5;">Dalí acústico!</h2>
@@ -160,12 +152,12 @@
 											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button">Empieza tu prueba gratis</a>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
-									
+
 								</div><!-- close .container -->
-								
+
 							</div><!-- close .progression-studios-slider-vertical-align -->
 						</div><!-- close .progression-studios-slider-display-table -->
-						
+
 						<div class="progression-studios-slider-mobile-background-cover"></div>
 					</div><!-- close .progression-studios-slider-image-background -->
 				</li>
@@ -173,46 +165,69 @@
 		</div><!-- close .progression-studios-slider - See /js/script.js file for options -->
 		
 		<div id="content-pro">
-			
   	 		<div class="container">
-				
 
-				<div class="row">
-					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+				<!--div class="row">
+					<div class="col-md my-auto">
 						<img src="images/draco_rosa_mad_love.jpg" class="img-fluid" alt="Watch in Any Devices">
 					</div>
-					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+					<div class="col-md my-auto">
 	  					<h2 class="short-border-bottom">Míralo en cualquier dispositivo</h2>
 						<p>Lorem ipsum dolor sit amet consectetur adipiscing nula pellentesquemagna a convallis nula facilisi. Praesent consequat eget elementumconsectetur. Nullam interdum, quam ac sagittis facilisis sapien dolor ipsum consequat ellit tristique senectus</p>
 						<div style="height:15px;"></div>
 						<p><a class="btn btn-green-pro" href="#" role="button">Ver mas</a></p>
 					</div>
-				</div><!-- close .row -->
-				
-				<div style="height:35px;"></div>
-				
-				<div class="clearfix"></div>
+				</div-->
+                <div class="dashboard-container">
+                    <h4 class="heading-extra-margin-bottom">Estrenos!</h4>
+                    <div class="row" >
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="i: ${#numbers.sequence(0, 7)}">
+                            <div class="item-listing-container-skrn">
+                                <a href="/dashboardMovieProfile"><img src="https://via.placeholder.com/1280x720/000000" alt="Listing"></a>
+                                <div class="item-listing-text-skrn">
+                                    <div class="item-listing-text-skrn-vertical-align"><h6><a href="/dashboardMovieProfile"></a></h6>
+                                    <h5>Evento en vivo</h5>
+                                    <ul class="progression-studios-slider-rating">
+                                        <li>PG</li>
+                                    </ul>
+                                    <ul id="sidebar-reviews-pro">
+                                        <li><i class="fa fa-spinner" ></i><span> 1hr 35min</span> </li>
+                                        <li><i class="fas fa-calendar-alt"></i><span> Jun 14, 2020</span> </li>
+                                        <li><i class="fas fa-clock"></i><span> 17:00</span> </li>
+                                        <li><i class="fas fa-dollar-sign"></i><span>1 USD</span> </li>
+                                    </ul>
+                                    <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Comprar</a></p>
+                                    </div><!-- close .item-listing-text-skrn-vertical-align -->
+                                </div><!-- close .item-listing-text-skrn -->
+                            </div><!-- close .item-listing-container-skrn -->
+                        </div><!-- close .col -->
+
+                    </div><!-- close .row -->
+
+                    <ul class="page-numbers">
+                        <li><a class="previous page-numbers" href="#!"><i class="fas fa-chevron-left"></i></a></li>
+                        <li><span class="page-numbers current">1</span></li>
+                        <li><a class="next page-numbers" href="#!"><i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+
+                </div><!-- close .dashboard-container -->
 			</div><!-- close .container -->
-			
-			
-			<hr>
-		
 		</div><!-- close #content-pro -->
-		
+
 		<footer id="footer-pro">
 			<div class="container">
 				<div class="row">
 					<div class="col-md">
 						<div class="copyright-text-pro">&copy; Copyright 2020 Vívelo. All Rights Reserved</div>
 					</div><!-- close .col -->
-					<div class="col-md">
+					<!--div class="col-md">
 						<ul class="social-icons-pro">
 							<li class="facebook-color"><a href="https://facebook.com/progressionstudios" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
 							<li class="twitter-color"><a href="https://twitter.com/Progression_S" target="_blank"><i class="fab fa-twitter"></i></a></li>
 							<li class="youtube-color"><a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
 							<li class="vimeo-color"><a href="https://vimeo.com" target="_blank"><i class="fab fa-vimeo-v"></i></a></li>
 						</ul>
-					</div><!-- close .col -->
+					</div--><!-- close .col -->
 				</div><!-- close .row -->
 			</div><!-- close .container -->
 		</footer>

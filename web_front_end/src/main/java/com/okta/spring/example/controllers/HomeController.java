@@ -25,23 +25,23 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/getVideoList")
+    /*@RequestMapping("/getVideoList")
     @ResponseBody
     public ResponseMsg  getVideoListJson() {
         return streamProviderService.getVideoList();
-    }
+    }*/
 
-    @RequestMapping("/home/getVideoList")
+    /*@RequestMapping("/home/getVideoList")
     public String getVideoList(Model model) {
-        model.addAttribute("videoList", streamProviderService.getVideoList());
+        //model.addAttribute("videoList", streamProviderService.getVideoList());
         return "home";
-    }
+    }*/
 
-    @RequestMapping("/home/getVideoList/{clipKey}")
+    /*@RequestMapping("/home/getVideoList/{clipKey}")
     public String getVideoListDetail(@PathVariable("clipKey") String clipKey, Model model) {
         model.addAttribute("clipKey", clipKey);
         return getVideoList(model);
-    }
+    }*/
 
     @RequestMapping("/dashboardMovieProfile/{refNo}")
     public String dashboardMovieProfile(@PathVariable("refNo") String refNo, Model model) {
@@ -76,20 +76,31 @@ public class HomeController {
 
     @RequestMapping("/dashboardHome")
     public String dashboardHome(Model model) {
-        model.addAttribute("videoList", streamProviderService.getVideoList());
+        model.addAttribute("videoList", streamProviderService.getVideoList("ondemand"));
         return "dashboard-home";
     }
-	
+
+    @RequestMapping("/dashboardLive")
+    public String dashboardLive(Model model) {
+        model.addAttribute("videoList", streamProviderService.getVideoList("live"));
+        return "dashboard-live";
+    }
+
+    @RequestMapping("/dashboardStore")
+    public String dashboardStore(Model model) {
+        return "dashboard-store";
+    }
+
 	@RequestMapping("/dashboardAccountPayment")
     public String dashboardAccountPayment() {
         return "dashboard-account-payment";
     }
-	
+
 	@RequestMapping("/dashboardAccount")
     public String dashboardAccount() {
         return "dashboard-account";
     }
-	
+
 	@RequestMapping("/dashboardComingSoon")
     public String dashboardComingSoon() {
         return "dashboard-coming-soon";

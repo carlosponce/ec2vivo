@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ResponseMsg implements Serializable {
 
-    
     /**
      * Serial version
      */

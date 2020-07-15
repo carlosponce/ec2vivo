@@ -1513,9 +1513,9 @@ ul.progression-studios-slider-rating {
 }
 
 ul.progression-studios-slider-rating li {
-	display:inline-block;
+	display:inline;
 	line-height:1;
-	margin:0px 7px 5px 0px;
+	margin:0px 2px 5px 0px;
 	padding:7px;
 	border-radius:5px;
 	font-size:11px;

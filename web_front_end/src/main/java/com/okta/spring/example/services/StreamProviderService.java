@@ -15,10 +15,10 @@ public class StreamProviderService {
     @Autowired
     ApplicationProperties applicationProperties;
 
-    public ResponseMsg getVideoList() {
+    public ResponseMsg getVideoList(String videoSource) {
 
-        final String uri = applicationProperties.getStreamingServiceUri() + "/getListVideosJson";
-        System.out.println("URI streaming service: " + uri);
+        final String uri = applicationProperties.getStreamingServiceUri() + "/getListVideosJsonVideoSource?videoSource=" + videoSource;
+
         RestTemplate restTemplate = new RestTemplate();
         String stringJsonResponse = restTemplate.getForObject(uri, String.class);
 

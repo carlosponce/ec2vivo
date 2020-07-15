@@ -105,11 +105,21 @@ public class StreamVideoProviderConfig {
         String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
         String url = applicationProperties.getSvpbaseUrl() + applicationProperties.getSvplistvideos() + "&token="
                 + token;
-        System.out.println(url);
+        //System.out.println(url);
         HttpResponse<String> response = Unirest.get(url).asString();
         System.out.println(response.getBody());
 
         return response.getBody();
+    }
+
+    public ResponseMsg getListVideosJson(String videoSource) {
+        String token = XmlUtil.getNodeTextContent(getToken(), "auth_token");
+        String url = applicationProperties.getSvpbaseUrl() + applicationProperties.getSvplistvideos() + "&token="
+                + token+"&video_source=" + videoSource;
+
+        HttpResponse<String> response = Unirest.get(url).asString();
+        return XmlUtil.unmarshall(response.getBody(), ResponseMsg.class);
+
     }
 
     public ResponseMsg getListVideosJson() {

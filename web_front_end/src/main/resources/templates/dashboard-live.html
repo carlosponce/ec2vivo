@@ -54,13 +54,13 @@
 			<nav id="mobile-navigation-pro">
 			
 				<ul id="mobile-menu-pro">
-	            <li class="current-menu-item">
+	            <li >
 	              <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
 	                Mi Contenido
 	              </a>
 	            </li>
-	            <li >
+	            <li class="current-menu-item">
                     <a href="/dashboardLive">
                           <span class="icon-Wifi-2"></span>
                       En Vivo
@@ -87,13 +87,13 @@
 		
 		<nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
             <ul id="vertical-sidebar-nav" class="sf-menu">
-              <li class="normal-item-pro current-menu-item">
+              <li >
                 <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
                   Mi Contenido
                 </a>
               </li>
-              <li >
+              <li class="normal-item-pro current-menu-item">
                 <a href="/dashboardLive">
                       <span class="icon-Wifi-2"></span>
                   En Vivo
@@ -123,16 +123,7 @@
                                 <div class="item-listing-text-skrn-vertical-align">
                                     <span th:text="${video.getTitle()}"></span>
                                     <div style="height:10px;"></div>
-                                    <ul class="progression-studios-slider-rating">
-                                        <li>PG</li>
-                                    </ul>
-                                    <!--div style="height:10px;"></div>
-                                    <ul id="sidebar-reviews-pro">
-                                        <li><i class="fa fa-spinner" ></i><span th:text="${video.getDuration()}"> </span> </li>
-                                        <li><i class="fas fa-calendar-alt"></i><span th:text="${video.getDateCreated()}"> </span> </li>
-                                    </ul-->
                                     <p><a class="btn btn-green-pro" th:href="@{/dashboardMovieProfile/{refNo}(refNo=${video.getRefNo()})}"  role="button"><i class="fa fa-play" style="font-size:small;color:#FFFFFF"></i> Reproducir</a></p>
-
 								</div><!-- close .item-listing-text-skrn-vertical-align -->
 							</div><!-- close .item-listing-text-skrn -->
 						</div><!-- close .item-listing-container-skrn -->

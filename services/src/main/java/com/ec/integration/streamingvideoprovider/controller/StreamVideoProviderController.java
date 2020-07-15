@@ -51,6 +51,12 @@ public class StreamVideoProviderController {
         return config.getListVideosJson();
     }
 
+    @GetMapping(value = "/getListVideosJsonVideoSource")
+    public ResponseMsg getListVideosJsonVideoSource(String videoSource) {
+        return config.getListVideosJson(videoSource);
+    }
+    
+
     @GetMapping(value = "/getVideobyRefNo")
     public ResponseMsg getVideobyRefNo(String refNo) {
         return config.getVideobyRefNo(refNo);

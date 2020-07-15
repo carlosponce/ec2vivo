@@ -54,7 +54,7 @@
 			<nav id="mobile-navigation-pro">
 			
 				<ul id="mobile-menu-pro">
-	            <li class="current-menu-item">
+	            <li >
 	              <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
 	                Mi Contenido
@@ -66,7 +66,7 @@
                       En Vivo
                     </a>
                   </li>
-                  <li >
+                  <li class="current-menu-item">
                     <a href="/dashboardStore">
                           <span class="icon-Android-Store"></span>
                       Tienda
@@ -87,7 +87,7 @@
 		
 		<nav id="sidebar-nav"><!-- Add class="sticky-sidebar-js" for auto-height sidebar -->
             <ul id="vertical-sidebar-nav" class="sf-menu">
-              <li class="normal-item-pro current-menu-item">
+              <li >
                 <a href="/dashboardHome">
 						<span class="icon-Old-TV"></span>
                   Mi Contenido
@@ -99,7 +99,7 @@
                   En Vivo
                 </a>
               </li>
-              <li >
+              <li class="normal-item-pro current-menu-item">
                 <a href="/dashboardStore">
                       <span class="icon-Android-Store"></span>
                   Tienda
@@ -114,30 +114,29 @@
         <div class="dashboard-container">
 
 				<h4 class="heading-extra-margin-bottom"></h4>
-				<div class="row">
-					<div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="video , stat: ${videoList.getVideoList()}">
-						<div class="item-listing-container-skrn">
-                            <a th:href="@{/dashboardMovieProfile/{refNo}(refNo=${video.getRefNo()})}"  ><img th:id="${video.getRefNo()}" class="preview_img" src="https://via.placeholder.com/1280x720/000000?text=Loading" alt="Listing"></a>
-                            <div style="height:30px;"></div>
-							<div class="item-listing-text-skrn">
+                <div class="row" >
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="i: ${#numbers.sequence(0, 7)}">
+                        <div class="item-listing-container-skrn">
+                            <a href="/dashboardMovieProfile"><img src="https://via.placeholder.com/1280x720/000000" alt="Listing"></a>
+                            <div class="item-listing-text-skrn">
                                 <div class="item-listing-text-skrn-vertical-align">
-                                    <span th:text="${video.getTitle()}"></span>
-                                    <div style="height:10px;"></div>
-                                    <ul class="progression-studios-slider-rating">
-                                        <li>PG</li>
-                                    </ul>
-                                    <!--div style="height:10px;"></div>
-                                    <ul id="sidebar-reviews-pro">
-                                        <li><i class="fa fa-spinner" ></i><span th:text="${video.getDuration()}"> </span> </li>
-                                        <li><i class="fas fa-calendar-alt"></i><span th:text="${video.getDateCreated()}"> </span> </li>
-                                    </ul-->
-                                    <p><a class="btn btn-green-pro" th:href="@{/dashboardMovieProfile/{refNo}(refNo=${video.getRefNo()})}"  role="button"><i class="fa fa-play" style="font-size:small;color:#FFFFFF"></i> Reproducir</a></p>
-
-								</div><!-- close .item-listing-text-skrn-vertical-align -->
-							</div><!-- close .item-listing-text-skrn -->
-						</div><!-- close .item-listing-container-skrn -->
+                                <h5>Evento en vivo</h5>
+                                <ul class="progression-studios-slider-rating">
+                                    <li>PG</li>
+                                </ul>
+                                <ul id="sidebar-reviews-pro">
+                                    <li><i class="fa fa-spinner" ></i><span> 1hr 35min</span> </li>
+                                    <li><i class="fas fa-calendar-alt"></i><span> Jun 14, 2020</span> </li>
+                                    <li><i class="fas fa-clock"></i><span> 17:00</span> </li>
+                                    <li><i class="fas fa-dollar-sign"></i><span>1 USD</span> </li>
+                                </ul>
+                                <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Comprar</a></p>
+                                </div><!-- close .item-listing-text-skrn-vertical-align -->
+                            </div><!-- close .item-listing-text-skrn -->
+                        </div><!-- close .item-listing-container-skrn -->
                     </div><!-- close .col -->
                 </div><!-- close .row -->
+
 
                 <ul class="page-numbers">
 					<li><a class="previous page-numbers" href="#!"><i class="fas fa-chevron-left"></i></a></li>
