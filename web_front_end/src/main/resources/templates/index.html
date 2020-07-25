@@ -17,12 +17,12 @@
 		<header id="masthead-pro">
 			<div class="container">
 				
-				<h1><a href="/index"><img th:src="@{images/logo.png}" alt="Logo"></a></h1>
+				<h1><a href="/"><img th:src="@{/images/logo.png}" alt="Logo"></a></h1>
 				
 				<nav id="site-navigation-pro">
 					<ul class="sf-menu">
 						<li class="normal-item-pro current-menu-item">
-							<a href="/index">Inicio</a>
+							<a href="/">Inicio</a>
 						</li>
 						<li class="normal-item-pro">
 							<a href="/dashboardHome">Mi Contenido</a>
@@ -118,7 +118,7 @@
 		<div class="flexslider progression-studios-slider">
 	      <ul class="slides">
 				<li class="progression_studios_animate_in">
-					<div class="progression-studios-slider-image-background" style="background-image:url(https://via.placeholder.com/1920x693/000000);">
+					<div class="progression-studios-slider-image-background" th:style=" 'background-image:url(' + @{${'/images/el_cornudo.jpeg'}} + ');'">
 						<div class="progression-studios-slider-display-table">
 							<div class="progression-studios-slider-vertical-align">
 								
@@ -126,9 +126,10 @@
 									
 									<div class="progression-studios-slider-caption-width">
 										<div class="progression-studios-slider-caption-align">
-											<h2 style="color:#d5ddd5;">Bienvenido a Vívelo!<span style="color:#d5ddd5;"></span></h2>
-											<h6 style="color:#ffffff;">Mira las mas larga colección de peliculas y series de TV, en cualquier lugar, en cualquier momento!</h6>
-											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button">Empieza tu prueba gratis!</a>
+											<h2 style="color:#d5ddd5;">El cornudo<span style="color:#d5ddd5;"></span></h2>
+                      <h6 style="color:#ffffff;">Típico hombre enamorado de la mujer equivocada. Uno de aquellos hombres que no duerme preocupado por no poder entender por qué le es infiel. Por no poder encontrar las herramientas necesarias para quitarle las ganas a su pareja de serle infiel. O por no poder alcanzar la madurez de compartir su esposa, su familia, sus trajes y hasta su sueldo con un desconocido… para él.</h6>
+                      <h6 style="color:#ffffff;">El pícaro Napo</h6>
+                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 									
@@ -141,15 +142,16 @@
 					</div><!-- close .progression-studios-slider-image-background -->
 				</li>
 				<li class="progression_studios_animate_left">
-					<div class="progression-studios-slider-image-background" style="background-image:url(https://via.placeholder.com/1920x693/000000);">
+					<div class="progression-studios-slider-image-background" th:style=" 'background-image:url(' + @{${'/images/soy_virgen_y_que.jpeg'}} + ');'">
 						<div class="progression-studios-slider-display-table">
 							<div class="progression-studios-slider-vertical-align">
 								<div class="container">
 									<div class="progression-studios-slider-caption-width">
 										<div class="progression-studios-slider-caption-align">
-											<h2 style="color:#d5ddd5;">Dalí acústico!</h2>
-											<h6 style="color:#ffffff;">Disfruta de la sesión acústica de tus canciones favoritas de Dalí!</h6>
-											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button">Empieza tu prueba gratis</a>
+											<h2 style="color:#d5ddd5;">Soy virgen!  ¿y qué?<span style="color:#d5ddd5;"></span></h2>
+                      <h6 style="color:#ffffff;">Disfruta en familia de esta comedia enmarcada en el humor fino, en la sátira política y en el doble sentido.</h6>
+                      <h6 style="color:#ffffff;">El pícaro Napo</h6>
+											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 
@@ -179,8 +181,35 @@
 					</div>
 				</div-->
                 <div class="dashboard-container">
-                    <h4 class="heading-extra-margin-bottom">Estrenos!</h4>
+                    <h4 class="heading-extra-margin-bottom">Próximos eventos!</h4>
                     <div class="row" >
+                      <div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+                        <img th:src="@{/images/el_masculino.jpeg}" class="img-fluid" alt="Watch in Any Devices">
+                      </div>
+                      <div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+                          <h2 class="short-border-bottom">El masculino</h2>
+                        <p>"El Masculino" es un pastuso con muchos atributos. Digno representante del género de los machos, de los varones, de los verracos. Un masculino de rasgos varoniles muy marcados, que cumple su rol con valentía, pero que repudia todo tipo de violencia. Un masculino que no se dejó contaminar por la presión social para procrear seres rencorosos, que no es hostil, que es amble y seductor -cabe recalcar- dentro y fuera de casa. Un masculino que practica normas de convivencia, respeta a las damas -cabe recalcar- propias y… si es ajena mucho más. Para este masculino no existe el machismo. Ama a todas, sin condicionamiento de raza, credo, ni posición social o económica. Respeta las creencias políticas -cabe recalcar- siempre y cuando compartan las coimas. Es parte de una sociedad emprendedora y pujante, pero despacito.</p>
+                        <div style="height:15px;"></div>
+                        <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a></p>
+                      </div>
+                    </div><!-- close .row -->
+
+                    <div style="height:35px;"></div>
+
+                
+				<div class="row">
+					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+	  					<h2 class="short-border-bottom">Ni loca ni pendeja</h2>
+						<p> Una mujer valiente que arriesga todo en el amor, en la lucha por sobrevivir...así sea trabajando en una línea caliente. Una mujer que no tiene miedo a maridos jóvenes y peor viejos, aunque le crean loca, pero nunca pendeja.</p>
+						<div style="height:15px;"></div>
+						<p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a></p>
+					</div>
+					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
+						<img th:src="@{/images/ni_loca_ni_pendeja.jpeg}" class="img-fluid" alt="Ni loca ni pendeja">
+					</div>
+				</div><!-- close .row -->
+
+                    <!--div class="row" >
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="i: ${#numbers.sequence(0, 7)}">
                             <div class="item-listing-container-skrn">
                                 <a href="/dashboardMovieProfile"><img src="https://via.placeholder.com/1280x720/000000" alt="Listing"></a>
@@ -197,12 +226,12 @@
                                         <li><i class="fas fa-dollar-sign"></i><span>1 USD</span> </li>
                                     </ul>
                                     <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Comprar</a></p>
-                                    </div><!-- close .item-listing-text-skrn-vertical-align -->
-                                </div><!-- close .item-listing-text-skrn -->
-                            </div><!-- close .item-listing-container-skrn -->
-                        </div><!-- close .col -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    </div><!-- close .row -->
+                    </div> close .row -->
 
                     <ul class="page-numbers">
                         <li><a class="previous page-numbers" href="#!"><i class="fas fa-chevron-left"></i></a></li>
