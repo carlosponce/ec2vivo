@@ -1,0 +1,83 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType oauth2
+    baseName ec2vivo
+    blueprints []
+    buildTool maven
+    cacheProvider no
+    clientFramework angularX
+    clientPackageManager npm
+    clientTheme cosmo
+    clientThemeVariant primary
+    creationTimestamp 1592287245256
+    databaseType mongodb
+    devDatabaseType mongodb
+    dtoSuffix DTO
+    embeddableLaunchScript false
+    enableHibernateCache false
+    enableSwaggerCodegen true
+    enableTranslation true
+    jhiPrefix jhi
+    jhipsterVersion "6.9.0"
+    languages [en, es]
+    messageBroker false
+    nativeLanguage en
+    otherModules []
+    packageName com.ec.vivo
+    prodDatabaseType mongodb
+    reactive true
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    skipUserManagement true
+    testFrameworks [cucumber]
+    useSass true
+    websocket false
+  }
+
+  entities Country, Location, Region, UserEc2Vivo, UserBilling
+}
+
+entity Country {
+  countryName String
+}
+/**
+ * not an ignored comment
+ */
+entity Location {
+  streetAddress String,
+  postalCode String,
+  city String,
+  stateProvince String
+}
+entity Region {
+  regionName String
+}
+entity UserEc2Vivo{
+  name String,
+  lastName String,
+  phone String,
+  email String,
+  userName String,
+  userPassword String,
+  loginSource String,
+  registerDate LocalDate
+}
+entity UserBilling {
+  eventId String,
+  ticketId String,
+  billingDate LocalDate,
+  email String,
+  discount BigDecimal,
+  price BigDecimal
+}
+relationship OneToOne {
+  Country{region} to Region,
+  Location{country} to Country,
+  UserBilling{user} to User,
+  UserBilling{user2vivo} to UserEc2Vivo
+}
+

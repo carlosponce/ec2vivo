@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 import com.ec.integration.streamingvideoprovider.StreamVideoProviderConfig;
+import com.ec.integration.streamingvideoprovider.message.dto.RequestMsgDto;
+import com.ec.integration.streamingvideoprovider.message.dto.ResponseMsgDto;
 import com.ec.integration.streamingvideoprovider.message.xmldto.GroupPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.PasswordPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.ResponseMsg;
 import com.ec.integration.streamingvideoprovider.message.xmldto.TicketPayload;
 import com.ec.integration.streamingvideoprovider.message.xmldto.VideoPasswordPayload;
-import com.nimbusds.jose.util.Base64;
+import com.ec.integration.streamingvideoprovider.service.StreamVideoProviderService;
+import com.ec.vivo.domain.UserBilling;
+import com.ec.vivo.domain.UserEc2Vivo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +34,9 @@ public class StreamVideoProviderController {
 
     @Autowired
     StreamVideoProviderConfig config;
+    
+    @Autowired
+    StreamVideoProviderService service;
 
     @GetMapping(value = "/getToken")
     public String getToken() {
@@ -165,6 +172,30 @@ public class StreamVideoProviderController {
         System.out.println("inside addGroupPasswordJson controller");
         ResponseMsg response = config.addGroupPasswordJson(obj);
         return new ResponseEntity<ResponseMsg>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping("/saveUser")
+    public ResponseEntity<ResponseMsgDto> saveUser(@RequestBody UserEc2Vivo obj)
+            throws URISyntaxException {
+        System.out.println("inside saveUser controller");
+        ResponseMsgDto response = service.saveUser(obj);
+        return new ResponseEntity<ResponseMsgDto>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping("/saveBilling")
+    public ResponseEntity<ResponseMsgDto> saveBilling(@RequestBody UserBilling obj)
+            throws URISyntaxException {
+        System.out.println("inside saveBilling controller");
+        ResponseMsgDto response = service.saveBilling(obj);
+        return new ResponseEntity<ResponseMsgDto>(response, HttpStatus.OK);
+    }
+    
+    @PostMapping("/getBillings")
+    public ResponseEntity<ResponseMsgDto> getBillings(@RequestBody RequestMsgDto obj)
+            throws URISyntaxException {
+        System.out.println("inside saveBilling controller");
+        ResponseMsgDto response = service.getBillings(obj.getEmail());
+        return new ResponseEntity<ResponseMsgDto>(response, HttpStatus.OK);
     }
 
 }

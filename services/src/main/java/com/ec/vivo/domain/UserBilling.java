@@ -22,6 +22,9 @@ public class UserBilling implements Serializable {
 
     @Field("event_id")
     private String eventId;
+    
+    @Field("event_name")
+    private String eventName;
 
     @Field("ticket_id")
     private String ticketId;
@@ -41,6 +44,10 @@ public class UserBilling implements Serializable {
     @DBRef
     @Field("user")
     private User user;
+
+    @DBRef
+    @Field("user2vivo")
+    private UserEc2Vivo user2vivo;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public String getId() {
@@ -137,9 +144,32 @@ public class UserBilling implements Serializable {
         this.user = user;
         return this;
     }
+    
+    
 
-    public void setUser(User user) {
+    public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+
+	public void setUser(User user) {
         this.user = user;
+    }
+
+    public UserEc2Vivo getUser2vivo() {
+        return user2vivo;
+    }
+
+    public UserBilling user2vivo(UserEc2Vivo userEc2Vivo) {
+        this.user2vivo = userEc2Vivo;
+        return this;
+    }
+
+    public void setUser2vivo(UserEc2Vivo userEc2Vivo) {
+        this.user2vivo = userEc2Vivo;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

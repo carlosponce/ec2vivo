@@ -1,7 +1,6 @@
 package com.ec.integration.streamingvideoprovider;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +16,13 @@ import com.ec.util.XmlUtil;
 import com.ec.vivo.config.ApplicationProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.trace.http.HttpTrace.Response;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 
-import org.apache.commons.io.IOUtils;
-import org.springframework.stereotype.Controller;
+
 
 @Component
 @Service

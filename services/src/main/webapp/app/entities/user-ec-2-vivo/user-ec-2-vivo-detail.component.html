@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userEc2Vivo">
+            <h2><span jhiTranslate="ec2VivoApp.userEc2Vivo.detail.title">User Ec 2 Vivo</span> {{ userEc2Vivo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.name">Name</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.email">Email</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.userName">User Name</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.userName }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.userPassword">User Password</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.userPassword }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.loginSource">Login Source</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.loginSource }}</span>
+                </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userEc2Vivo.registerDate">Register Date</span></dt>
+                <dd>
+                    <span>{{ userEc2Vivo.registerDate }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-ec-2-vivo', userEc2Vivo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

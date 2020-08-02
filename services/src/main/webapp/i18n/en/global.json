@@ -11,6 +11,7 @@
         "country": "Country",
         "location": "Location",
         "userBilling": "User Billing",
+        "userEc2Vivo": "User Ec 2 Vivo",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

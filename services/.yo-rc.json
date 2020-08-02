@@ -38,6 +38,10 @@
     "nativeLanguage": "en",
     "languages": ["en", "es"],
     "blueprints": [],
-    "reactive": true
-  }
+    "reactive": true,
+    "skipUserManagement": true,
+    "skipClient": false,
+    "skipServer": false
+  },
+  "entities": ["Country", "Location", "Region", "UserEc2Vivo", "UserBilling"]
 }

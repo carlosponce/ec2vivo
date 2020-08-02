@@ -4,11 +4,16 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IUserBilling, UserBilling } from 'app/shared/model/user-billing.model';
 import { UserBillingService } from './user-billing.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IUserEc2Vivo } from 'app/shared/model/user-ec-2-vivo.model';
+import { UserEc2VivoService } from 'app/entities/user-ec-2-vivo/user-ec-2-vivo.service';
+
+type SelectableEntity = IUser | IUserEc2Vivo;
 
 @Component({
   selector: 'jhi-user-billing-update',
@@ -17,6 +22,7 @@ import { UserService } from 'app/core/user/user.service';
 export class UserBillingUpdateComponent implements OnInit {
   isSaving = false;
   users: IUser[] = [];
+  user2vivos: IUserEc2Vivo[] = [];
   billingDateDp: any;
 
   editForm = this.fb.group({
@@ -28,11 +34,13 @@ export class UserBillingUpdateComponent implements OnInit {
     discount: [],
     price: [],
     user: [],
+    user2vivo: [],
   });
 
   constructor(
     protected userBillingService: UserBillingService,
     protected userService: UserService,
+    protected userEc2VivoService: UserEc2VivoService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -42,6 +50,28 @@ export class UserBillingUpdateComponent implements OnInit {
       this.updateForm(userBilling);
 
       this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+
+      this.userEc2VivoService
+        .query({ filter: 'userbilling-is-null' })
+        .pipe(
+          map((res: HttpResponse<IUserEc2Vivo[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: IUserEc2Vivo[]) => {
+          if (!userBilling.user2vivo || !userBilling.user2vivo.id) {
+            this.user2vivos = resBody;
+          } else {
+            this.userEc2VivoService
+              .find(userBilling.user2vivo.id)
+              .pipe(
+                map((subRes: HttpResponse<IUserEc2Vivo>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: IUserEc2Vivo[]) => (this.user2vivos = concatRes));
+          }
+        });
     });
   }
 
@@ -55,6 +85,7 @@ export class UserBillingUpdateComponent implements OnInit {
       discount: userBilling.discount,
       price: userBilling.price,
       user: userBilling.user,
+      user2vivo: userBilling.user2vivo,
     });
   }
 
@@ -83,6 +114,7 @@ export class UserBillingUpdateComponent implements OnInit {
       discount: this.editForm.get(['discount'])!.value,
       price: this.editForm.get(['price'])!.value,
       user: this.editForm.get(['user'])!.value,
+      user2vivo: this.editForm.get(['user2vivo'])!.value,
     };
   }
 
@@ -102,7 +134,7 @@ export class UserBillingUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IUser): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

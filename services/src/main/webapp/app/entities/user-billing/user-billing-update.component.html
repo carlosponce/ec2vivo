@@ -58,6 +58,14 @@
                         <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ec2VivoApp.userBilling.user2vivo" for="field_user2vivo">User 2 Vivo</label>
+                    <select class="form-control" id="field_user2vivo" name="user2vivo" formControlName="user2vivo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userEc2VivoOption.id === editForm.get('user2vivo')!.value?.id ? editForm.get('user2vivo')!.value : userEc2VivoOption" *ngFor="let userEc2VivoOption of user2vivos; trackBy: trackById">{{ userEc2VivoOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

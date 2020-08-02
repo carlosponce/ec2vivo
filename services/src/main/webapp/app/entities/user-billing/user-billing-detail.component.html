@@ -36,6 +36,12 @@
                 <dd>
                     {{ userBilling.user?.id }}
                 </dd>
+                <dt><span jhiTranslate="ec2VivoApp.userBilling.user2vivo">User 2 Vivo</span></dt>
+                <dd>
+                    <div *ngIf="userBilling.user2vivo">
+                        <a [routerLink]="['/user-ec-2-vivo', userBilling.user2vivo?.id, 'view']">{{ userBilling.user2vivo?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

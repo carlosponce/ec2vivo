@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
@@ -22,7 +23,8 @@ import java.util.Collection;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ApplicationProperties.class})
-@ComponentScan("com.ec")
+@ComponentScan("com.ec.*")
+@EnableMongoRepositories
 public class Ec2VivoApp {
 
     private static final Logger log = LoggerFactory.getLogger(Ec2VivoApp.class);

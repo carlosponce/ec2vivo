@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="ec2VivoApp.userEc2Vivo.home.title">User Ec 2 Vivos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-user-ec-2-vivo" [routerLink]="['/user-ec-2-vivo/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="ec2VivoApp.userEc2Vivo.home.createLabel">
+            Create a new User Ec 2 Vivo
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="userEc2Vivos?.length === 0">
+        <span jhiTranslate="ec2VivoApp.userEc2Vivo.home.notFound">No userEc2Vivos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="userEc2Vivos && userEc2Vivos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.lastName">Last Name</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.phone">Phone</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.email">Email</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.userName">User Name</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.userPassword">User Password</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.loginSource">Login Source</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userEc2Vivo.registerDate">Register Date</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let userEc2Vivo of userEc2Vivos ;trackBy: trackId">
+                    <td><a [routerLink]="['/user-ec-2-vivo', userEc2Vivo.id, 'view']">{{ userEc2Vivo.id }}</a></td>
+                    <td>{{ userEc2Vivo.name }}</td>
+                    <td>{{ userEc2Vivo.lastName }}</td>
+                    <td>{{ userEc2Vivo.phone }}</td>
+                    <td>{{ userEc2Vivo.email }}</td>
+                    <td>{{ userEc2Vivo.userName }}</td>
+                    <td>{{ userEc2Vivo.userPassword }}</td>
+                    <td>{{ userEc2Vivo.loginSource }}</td>
+                    <td>{{ userEc2Vivo.registerDate | date:'mediumDate' }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/user-ec-2-vivo', userEc2Vivo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/user-ec-2-vivo', userEc2Vivo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(userEc2Vivo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

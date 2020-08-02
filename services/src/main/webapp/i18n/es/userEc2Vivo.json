@@ -1,0 +1,29 @@
+{
+  "ec2VivoApp": {
+    "userEc2Vivo": {
+      "home": {
+        "title": "User Ec 2 Vivos",
+        "createLabel": "Crear nuevo User Ec 2 Vivo",
+        "createOrEditLabel": "Crear o editar User Ec 2 Vivo",
+        "notFound": "Ningún User Ec 2 Vivos encontrado"
+      },
+      "created": "Un nuevo User Ec 2 Vivo ha sido creado con el identificador {{ param }}",
+      "updated": "Un User Ec 2 Vivo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un User Ec 2 Vivo ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar User Ec 2 Vivo {{ id }}?"
+      },
+      "detail": {
+        "title": "User Ec 2 Vivo"
+      },
+      "name": "Name",
+      "lastName": "Last Name",
+      "phone": "Phone",
+      "email": "Email",
+      "userName": "User Name",
+      "userPassword": "User Password",
+      "loginSource": "Login Source",
+      "registerDate": "Register Date"
+    }
+  }
+}

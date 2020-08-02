@@ -30,6 +30,7 @@
                     <th scope="col" ><span jhiTranslate="ec2VivoApp.userBilling.discount">Discount</span></th>
                     <th scope="col" ><span jhiTranslate="ec2VivoApp.userBilling.price">Price</span></th>
                     <th scope="col" ><span jhiTranslate="ec2VivoApp.userBilling.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="ec2VivoApp.userBilling.user2vivo">User 2 Vivo</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -44,6 +45,11 @@
                     <td>{{ userBilling.price }}</td>
                     <td>
                         {{ userBilling.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="userBilling.user2vivo">
+                            <a [routerLink]="['/user-ec-2-vivo', userBilling.user2vivo?.id, 'view']" >{{ userBilling.user2vivo?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

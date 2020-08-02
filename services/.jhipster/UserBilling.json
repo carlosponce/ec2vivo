@@ -34,6 +34,14 @@
       "relationshipName": "user",
       "otherEntityField": "id",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "userEc2Vivo",
+      "otherEntityRelationshipName": "userBilling",
+      "relationshipName": "user2vivo",
+      "otherEntityField": "id",
+      "ownerSide": true
     }
   ],
   "changelogDate": "20200617025424",
@@ -46,5 +54,5 @@
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": "*"
+  "applications": ["ec2vivo"]
 }

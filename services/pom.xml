@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ec.vivo</groupId>
-    <artifactId>vivelo_rest_api</artifactId>
-    <version>0.0.1</version>
+    <artifactId>ec-2-vivo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Vivelo REST API</name>
+    <name>Ec 2 Vivo</name>
 
     <repositories>
         <repository>
@@ -312,17 +312,22 @@
             <scope>test</scope>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.konghq</groupId>
-            <artifactId>unirest-java</artifactId>
-            <version>3.7.02</version>
-        </dependency>
+		<!-- https://mvnrepository.com/artifact/com.konghq/unirest-java -->
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.8.06</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>provided</scope>
+		</dependency>
+
+
     </dependencies>
 
     <build>
@@ -814,10 +819,6 @@
                     <configuration>
                         <mainClass>${start-class}</mainClass>
                         <fork>true</fork>
-                        <executable>true</executable>
-                        <embeddedLaunchScriptProperties>
-                            <mode>service</mode>
-                        </embeddedLaunchScriptProperties>
                         <!--
                         Enable the line below to have remote debugging of your application on port 5005
                         <jvmArguments>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jvmArguments>
@@ -897,7 +898,7 @@
         <profile>
             <id>dev</id>
             <activation>
-                <!--activeByDefault>true</activeByDefault-->
+                <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>
