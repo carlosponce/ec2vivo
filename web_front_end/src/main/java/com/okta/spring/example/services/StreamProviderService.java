@@ -8,6 +8,12 @@ import com.okta.spring.example.xmldto.ResponseMsg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import  com.okta.spring.example.dto.ResponseMsgDto;
+import java.util.Map;
+import java.time.LocalDate;
+import java.util.HashMap;
+import org.springframework.http.ResponseEntity;
+import com.okta.spring.example.domain.UserEc2Vivo;
 
 @Component
 public class StreamProviderService {
@@ -84,5 +90,26 @@ public class StreamProviderService {
         return restTemplate.getForObject(uri, String.class);
 
     }
+
+    public void saveNewUser(UserEc2Vivo userVivelo) {
+        final String uri = applicationProperties.getStreamingServiceUri() + "/saveUser";
+
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("name", userVivelo.getName());
+        params.put("lastName", userVivelo.getLastName());
+        params.put("phone", userVivelo.getPhone());
+        params.put("email", userVivelo.getEmail());
+        params.put("userName", userVivelo.getUserName());
+        params.put("userPassword", userVivelo.getUserPassword());
+        params.put("loginSource", userVivelo.getLoginSource());
+        params.put("registerDate",LocalDate.now() .toString());
+        params.put("isCreation", "true");
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<ResponseMsgDto> response = restTemplate.postForEntity(uri, params, ResponseMsgDto.class );
+
+    }
+
 
 }

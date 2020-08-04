@@ -64,11 +64,13 @@ public class HostedLoginCodeFlowExampleApplication  extends SpringBootServletIni
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
+                //.csrf().disable()
                 .exceptionHandling()
                         .accessDeniedHandler((req, res, e) -> res.sendRedirect("/403"))
 
                 .and().authorizeRequests()
-                        .antMatchers(HttpMethod.GET,"/", "/custom-login", "/css/**","/style.css","/icons/**","/images/**","/js/**").permitAll()
+                        .antMatchers(HttpMethod.POST,"/saveUser").permitAll()
+                        .antMatchers(HttpMethod.GET,"/", "/custom-login", "/css/**","/style.css","/icons/**","/images/**","/js/**","/403").permitAll()
                         .antMatchers("/api/streamvideoprovider").permitAll()
                         .anyRequest().authenticated()
 

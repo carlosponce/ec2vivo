@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
+import com.okta.spring.example.domain.UserEc2Vivo;
 
 @Controller
 public class HomeController {
@@ -42,6 +47,7 @@ public class HomeController {
         model.addAttribute("clipKey", clipKey);
         return getVideoList(model);
     }*/
+    
 
     @RequestMapping("/dashboardMovieProfile/{refNo}")
     public String dashboardMovieProfile(@PathVariable("refNo") String refNo, Model model) {
@@ -79,6 +85,15 @@ public class HomeController {
         model.addAttribute("videoList", streamProviderService.getVideoList("ondemand"));
         return "dashboard-home";
     }
+
+    @PostMapping("/saveUser")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void saveUser(@RequestBody UserEc2Vivo obj) {
+        System.out.println("##### Iniciando proceso de registro de usuario ");
+        streamProviderService.saveNewUser(obj);
+
+    }
+
 
     @RequestMapping("/dashboardLive")
     public String dashboardLive(Model model) {
