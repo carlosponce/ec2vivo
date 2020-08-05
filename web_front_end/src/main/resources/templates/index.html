@@ -9,7 +9,8 @@
 
 		<link rel="stylesheet" th:href="@{icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
     <link rel="stylesheet" th:href="@{icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
-		<title>Vívelo - Vívelo mejor, Vívelo bien! </title>
+    <title>Vívelo - Vívelo mejor, Vívelo bien! </title>
+    
 	</head>
 	<body>
 
@@ -128,7 +129,8 @@
 											<h2 style="color:#d5ddd5;">El cornudo<span style="color:#d5ddd5;"></span></h2>
                       <h6 style="color:#ffffff;">Típico hombre enamorado de la mujer equivocada. Uno de aquellos hombres que no duerme preocupado por no poder entender por qué le es infiel. Por no poder encontrar las herramientas necesarias para quitarle las ganas a su pareja de serle infiel. O por no poder alcanzar la madurez de compartir su esposa, su familia, sus trajes y hasta su sueldo con un desconocido… para él.</h6>
                       <h6 style="color:#ffffff;">El pícaro Napo</h6>
-                      <a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a>
+                      
+                      <div  id="paypal-button-container-1"></div>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 									
@@ -150,7 +152,7 @@
 											<h2 style="color:#d5ddd5;">Soy virgen!  ¿y qué?<span style="color:#d5ddd5;"></span></h2>
                       <h6 style="color:#ffffff;">Disfruta en familia de esta comedia enmarcada en el humor fino, en la sátira política y en el doble sentido.</h6>
                       <h6 style="color:#ffffff;">El pícaro Napo</h6>
-											<a class="btn btn-green-pro btn-slider-pro btn-shadow-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a>
+											  <div id="paypal-button-container-2"></div>
 										</div><!-- close .progression-studios-slider-caption-align -->
 									</div><!-- close .progression-studios-slider-caption-width -->
 
@@ -189,7 +191,7 @@
                           <h2 class="short-border-bottom">El masculino</h2>
                         <p>"El Masculino" es un pastuso con muchos atributos. Digno representante del género de los machos, de los varones, de los verracos. Un masculino de rasgos varoniles muy marcados, que cumple su rol con valentía, pero que repudia todo tipo de violencia. Un masculino que no se dejó contaminar por la presión social para procrear seres rencorosos, que no es hostil, que es amble y seductor -cabe recalcar- dentro y fuera de casa. Un masculino que practica normas de convivencia, respeta a las damas -cabe recalcar- propias y… si es ajena mucho más. Para este masculino no existe el machismo. Ama a todas, sin condicionamiento de raza, credo, ni posición social o económica. Respeta las creencias políticas -cabe recalcar- siempre y cuando compartan las coimas. Es parte de una sociedad emprendedora y pujante, pero despacito.</p>
                         <div style="height:15px;"></div>
-                        <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a></p>
+                        <div id="paypal-button-container-3"></div>
                       </div>
                     </div><!-- close .row -->
 
@@ -201,7 +203,7 @@
 	  					<h2 class="short-border-bottom">Ni loca ni pendeja</h2>
 						<p> Una mujer valiente que arriesga todo en el amor, en la lucha por sobrevivir...así sea trabajando en una línea caliente. Una mujer que no tiene miedo a maridos jóvenes y peor viejos, aunque le crean loca, pero nunca pendeja.</p>
 						<div style="height:15px;"></div>
-						<p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Adquirir este evento</a></p>
+            <div id="paypal-button-container-4"></div>
 					</div>
 					<div class="col-md my-auto"><!-- .my-auto vertically centers contents -->
 						<img th:src="@{/images/ni_loca_ni_pendeja.jpeg}" class="img-fluid" alt="Ni loca ni pendeja">
@@ -277,5 +279,66 @@
                 <script th:src="@{/js/afterglow.min.js}" defer></script><!-- Video Player JS Plugin -->
                 <script th:src="@{/js/script.js}" defer></script><!-- Custom Document Ready JS -->
                 <script th:src="@{/js/script-dashboard.js}" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
+                <script src="https://www.paypal.com/sdk/js?client-id=AdqCYG7ULfltyKMdrg-h9_OzC7nEAX827Sz_-1gW57GtbrzY1Uo6Wx1YwMjKWRUL_CdvJB4zQZ-CAkcJ&currency=USD&locale=es_CO"></script>
+                <script>
+                // Render the PayPal button into #paypal-button-container
+               </script>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+
+      function InicioSesionYProcesarPago () {}
+
+      function  IniciarProcesoPago(data, actions) {
+
+            console.log("#### Iniciando proceso de compra de evento");
+
+              // This function sets up the details of the transaction, including the amount and line item details.
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '1.00'
+                  }
+                }]
+              });
+        }
+
+        let createOrderFn = InicioSesionYProcesarPago;
+
+        let isAuthenticated = [[${#authorization.expression('isAuthenticated()')}]];
+
+          if(isAuthenticated){
+            createOrderFn = IniciarProcesoPago;
+          }
+
+          [ '#paypal-button-container-1', '#paypal-button-container-2', '#paypal-button-container-3','#paypal-button-container-4' ].forEach(function(selector) {
+
+        paypal.Buttons({
+
+          style: {
+            layout: 'horizontal',
+            size: 'small',
+            color:  'gold',
+            shape:  'rect',
+            label:  'pay',
+            branding: false
+          },
+
+          createOrder: createOrderFn,
+
+            onApprove: function(data, actions) {
+              console.log("#### Iniciando proceso de compra finalizado");
+              return actions.order.capture().then(function(details) {
+                // This function shows a transaction success message to your buyer.
+                console.log('Transaction completed by ' + details.payer.name.given_name);
+              });
+            }
+
+          }).render(selector);
+
+        });
+
+  /*]]>*/
+</script>
 	</body>
 </html>
