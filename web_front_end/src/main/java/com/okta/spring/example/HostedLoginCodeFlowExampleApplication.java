@@ -70,7 +70,7 @@ public class HostedLoginCodeFlowExampleApplication  extends SpringBootServletIni
 
                 .and().authorizeRequests()
                         .antMatchers(HttpMethod.POST,"/saveUser").permitAll()
-                        .antMatchers(HttpMethod.GET,"/", "/custom-login", "/css/**","/style.css","/icons/**","/images/**","/js/**","/403").permitAll()
+                        .antMatchers(HttpMethod.GET,"/","/faqs", "/custom-login", "/css/**","/style.css","/icons/**","/images/**","/js/**","/403").permitAll()
                         .antMatchers("/api/streamvideoprovider").permitAll()
                         .anyRequest().authenticated()
 

@@ -17,6 +17,11 @@
 <head>
     <title>User Details</title>
     <!--/*/ <th:block th:include="head :: head"/> /*/-->
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+    <title>Vivelo - Vive lo mejor, Vívelo bien! </title>
 </head>
 
 <body id="samples">
@@ -25,10 +30,11 @@
     <div class="row">
         <div class="box col-md-6 col-md-offset-3">
             <div class="logo">
+              <img th:src="@{/images/Logo_horizontal_1920x1080_vivelotv_circular_icon_slogan_vf.png}" width="240"  >
                 <h1>403</h1>
             </div>
             <p class="lead text-muted">Unauthorized</p>
-            <a href="/" class="btn btn-success">Home</a>
+            <a href="/" class="btn btn-success">Inicio</a>
         </div>
     </div>
 </div>

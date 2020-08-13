@@ -7,12 +7,22 @@
 		<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 		<link rel="stylesheet" th:href="@{/style.css}">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
-		
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 		<link rel="stylesheet" th:href="@{/icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
 		<link rel="stylesheet" th:href="@{/icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
 		
-		
-		<title>Vívelo - Media Streaming App</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+    <title>Vivelo - Vive lo mejor, Vívelo bien! </title>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146860928-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146860928-2');
+</script>
 	</head>
 	<body th:each="video , stat: ${respMesg.getVideoList()}">
 		<div id="sidebar-bg">
@@ -32,10 +42,7 @@
 				</div><!-- close #header-user-profile-click -->
 				<div id="header-user-profile-menu">
 					<ul>
-                        <li><a href="/dashboardProfile"><span class="icon-User"></span>Mi Perfil</a></li>
-                        <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
                         <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
-                        <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
                         <li>
 
                             <form id="logoutForm" method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">
@@ -112,18 +119,18 @@
 			</div><!-- close .content-sidebar-section -->
 			
 			<div class="content-sidebar-section">
-				<h4 class="content-sidebar-sub-header" >Release Date</h4>
-				<div class="content-sidebar-short-description" th:text=${video.getDateCreated()}>2 October, 2017 (USA)</div>
+				<!--h4 class="content-sidebar-sub-header" >Release Date</h4>
+				<div class="content-sidebar-short-description" th:text=${video.getDateCreated()}>2 October, 2017 (USA)</div-->
 			</div><!-- close .content-sidebar-section -->
 			
 			<div class="content-sidebar-section">
-				<h4 class="content-sidebar-sub-header">Length</h4>
-				<div class="content-sidebar-short-description" th:text=${video.getDuration()}>2 hr 43 min</div>
+				<!--h4 class="content-sidebar-sub-header">Length</h4>
+				<div class="content-sidebar-short-description" th:text=${video.getDuration()}>2 hr 43 min</div-->
 			</div><!-- close .content-sidebar-section -->
 			
 			<div class="content-sidebar-section">
-				<h4 class="content-sidebar-sub-header">Origen</h4>
-				<div class="content-sidebar-short-description" th:text=${video.getVideoSource()}> Origen</div>
+				<!--h4 class="content-sidebar-sub-header">Origen</h4>
+				<div class="content-sidebar-short-description" th:text=${video.getVideoSource()}> Origen</div-->
 			</div><!-- close .content-sidebar-section -->
 
 
@@ -151,7 +158,7 @@
 						<div class="col-sm">
 							<h5 th:text=${video.getTitle()}></h5>
 							
-							<div class="rating-pro">
+							<!--div class="rating-pro">
    							  <label>
    							    <input type="radio" name="rating-pro" value="10" title="10 stars"> 10
    							  </label>
@@ -182,11 +189,11 @@
 							  <label>
 							    <input type="radio" name="rating-pro" value="1" title="1 star"> 1
 							  </label>
-							</div>
+							</div-->
 							
 						</div>
 						<div class="col-sm">
-							<h6>User Rating</h6>
+							<!--h6>User Rating</h6>
 					      <div
 					        class="circle-rating-pro"
 					        data-value="1"
@@ -198,7 +205,7 @@
 					        }"
 					        data-empty-fill="#def6de"
 					        data-reverse="true"
-					      ><span style="color:#42b740;">10</span></div>
+					      ><span style="color:#42b740;">10</span></div-->
 							<div class="clearfix"></div>
 						</div>
 					</div><!-- close .row -->
@@ -209,8 +216,9 @@
 				
 				
 				<div class="movie-details-section">
-					<h2>Descripción</h2>
-					<p>Disfruta de tú música preferida, en la comida tu casa, vive esta nueva experiencia con Vívelo!</p>
+          <div><img th:src="@{/images/Logo_horizontal_1920x1080_vivelotv_circular_icon_slogan_vf.png}" width="240"></div>
+          <div class="clearfix"></div>
+					<p>Somos una empresa de entretenimiento Ecuatoriana, cuyo objetivo principal es brindar a sus usuarios la experiencia los eventos en vivo y contenidos audiovisuales en la comodidad de su casa a través de nuestra plataforma, con la mayor calidad disponible en audio y vídeo, sin complicados trámites, sin tiempos de espera, ni confirmaciones, solo regístrate, compra tu ticket al evento o contenido que quieres ver y disfrútalo dentro de nuestra plataforma.</p>
 				</div><!-- close .movie-details-section -->
 
 			</div><!-- close .dashboard-container -->

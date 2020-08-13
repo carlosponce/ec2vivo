@@ -6,11 +6,21 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 		<link rel="stylesheet" th:href="@{/style.css}">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
-		
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 		<link rel="stylesheet" th:href="@{icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
 		<link rel="stylesheet" th:href="@{icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+    <title>Vivelo - Vive lo mejor, Vívelo bien! </title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146860928-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-		<title>Vívelo - Media Streaming App</title>
+  gtag('config', 'UA-146860928-2');
+</script>
 	</head>
 	<body>
 		<div id="sidebar-bg">
@@ -29,9 +39,7 @@
 				</div><!-- close #header-user-profile-click -->
 				<div id="header-user-profile-menu">
 					<ul>
-                        <li><a href="/dashboardProfile"><span class="icon-User"></span>Mi Perfil</a></li>
                         <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
-                        <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
                         <li>
 
                         <form id="logoutForm" method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">
@@ -113,11 +121,25 @@
 
         <div class="dashboard-container">
 
-				<h4 class="heading-extra-margin-bottom"></h4>
+        <h4 class="heading-extra-margin-bottom"></h4>
+        <div class="row">
+					<div class="col-md">
+						
+						<div class="jumbotron jumbotron-fluid jumbotron-pro">
+						  <div class="container">
+                <h5>Proximamente adquiere tus eventos favoritos!</h5>
+                <img th:src="@{/images/Logo_horizontal_1920x1080_vivelotv_circular_icon_slogan_vf.png}" >
+						  </div>
+						</div><!-- close .jumbotron -->
+						
+					</div><!-- close .col-md -->
+		
+        </div><!-- close .row -->
                 <div class="row" >
-                    <div class="col-12 col-md-6 col-lg-4 col-xl-3" th:each="i: ${#numbers.sequence(0, 7)}">
+                  <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3"  th:each="i: ${#numbers.sequence(0, 7)}">>
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <div class="item-listing-container-skrn">
-                            <a href="/dashboardMovieProfile"><img src="https://via.placeholder.com/1280x720/000000" alt="Listing"></a>
+                            <a href="#"><img th:src="@{/images/el_cornudo.jpeg}" alt="Listing"></a>
                             <div class="item-listing-text-skrn">
                                 <div class="item-listing-text-skrn-vertical-align">
                                 <h5>Evento en vivo</h5>
@@ -130,7 +152,9 @@
                                     <li><i class="fas fa-clock"></i><span> 17:00</span> </li>
                                     <li><i class="fas fa-dollar-sign"></i><span>1 USD</span> </li>
                                 </ul>
-                                <p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Comprar</a></p>
+                                <!--p><a class="btn btn-green-pro" href="#" role="button"><i class="fas fa-credit-card" style="font-size:medium;color:#FFFFFF"></i> Comprar</a></p>
+                                <input type="hidden" id="paypal-button-container-1_" value="1.0">
+                                <div th:id="paypal-button-container-1"></div>
                                 </div><!-- close .item-listing-text-skrn-vertical-align -->
                             </div><!-- close .item-listing-text-skrn -->
                         </div><!-- close .item-listing-container-skrn -->
@@ -147,8 +171,6 @@
 
 			</div><!-- close .dashboard-container -->
 		</main>
-		
-		
 		</div><!-- close #sidebar-bg-->
 		
 		<!-- Required Framework JavaScript -->
@@ -164,8 +186,8 @@
 		<script th:src="@{/js/circle-progress.min.js}" defer></script><!-- Circle Progress JS Plugin -->
 		<script th:src="@{/js/afterglow.min.js}" defer></script><!-- Video Player JS Plugin -->
 		<script th:src="@{/js/script.js}" defer></script><!-- Custom Document Ready JS -->
-        <script th:src="@{/js/script-dashboard.js}" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
-         <script th:inline="javascript">
+    <script th:src="@{/js/script-dashboard.js}" defer></script><!-- Custom Document Ready for Dashboard Only JS -->
+      <script th:inline="javascript">
         /*<![CDATA[*/
 
             $(document).ready(function(){
@@ -186,6 +208,55 @@
         });
 
 /*]]>*/
+</script>
+<script src="https://www.paypal.com/sdk/js?client-id=AdqCYG7ULfltyKMdrg-h9_OzC7nEAX827Sz_-1gW57GtbrzY1Uo6Wx1YwMjKWRUL_CdvJB4zQZ-CAkcJ&currency=USD&locale=es_CO"></script>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+
+
+        [ '#paypal-button-container-1' ].forEach(function(selector) {
+
+        paypal.Buttons({
+
+          style: {
+            layout: 'horizontal',
+            size: 'small',
+            color:  'gold',
+            shape:  'rect',
+            label:  'pay',
+            branding: false
+          },
+          commit: true,
+          createOrder:  function  IniciarProcesoPago(data, actions) {
+
+              console.log("#### Iniciando proceso de compra de evento");
+
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                  purchase_units: [{
+                    amount: {
+                      value: document.getElementById(selector.substring(1) + '_').value
+                    }
+                  }]
+                });
+              },
+
+            onApprove: function(data, actions) {
+              console.log("#### Iniciando proceso de compra finalizado");
+              return actions.order.capture().then(function(details) {
+                // This function shows a transaction success message to your buyer.
+                console.log('Transaction completed by ' + details.payer.name.given_name);
+                console.log('token Order ID:  ' + data.orderID);
+                console.log('Payer ID:  ' + data.payerID);
+              });
+            }
+
+          }).render(selector);
+
+        });
+
+  /*]]>*/
 </script>
 <noscript>Your browser does not support JavaScript! JavaScript is needed to display this video player!</noscript>
 

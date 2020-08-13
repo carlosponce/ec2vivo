@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,26 +7,37 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 		<link rel="stylesheet" th:href="@{/style.css}">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
-		
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 		<link rel="stylesheet" th:href="@{icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
         <link rel="stylesheet" th:href="@{icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
-        
-		<title>SKRN - Media Streaming App</title>
+        <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+        <title>Vivelo - Vive lo mejor, Vívelo bien! </title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146860928-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146860928-2');
+</script>
 	</head>
 	<body>
 		
 		<header id="masthead-pro">
 			<div class="container">
 				
-				<h1><a href="/index"><img th:src="@{/images/logo.png}" alt="Logo"></a></h1>
+				<h1><a href="/"><img th:src="@{/images/logo.png}" alt="Logo"></a></h1>
 				
-				<nav id="site-navigation-pro">
+        <nav id="site-navigation-pro">
 					<ul class="sf-menu">
-						<li class="normal-item-pro">
-							<a href="/index">Home</a>
+						<li class="normal-item-pro current-menu-item">
+							<a href="/">Inicio</a>
 						</li>
 						<li class="normal-item-pro">
-							<a href="/dashboardHome">New Releases</a>
+							<a href="/dashboardHome">Mi Contenido</a>
 							<!-- Sub-Menu Example >
 							<ul class="sub-menu">
 								<li class="normal-item-pro">
@@ -42,32 +53,29 @@
 							< End Sub-Menu example -->
 						</li>
 						<li class="normal-item-pro">
-							<a href="/signupStep1">Pricing Plans</a>
-						</li>
-						<li class="normal-item-pro current-menu-item">
-							<a href="/faqs">FAQs</a>
+							<a href="/faqs">Contáctanos</a>
 						</li>
 					</ul>
 				</nav>
 				
-				<a href="/signupStep1" class="btn btn-header-pro btn-green-pro noselect">Start a Free Trial</a>
-				
-				<button class="btn btn-header-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
-				
+        <form method="get" action="/dashboardHome" th:unless="${#authorization.expression('isAuthenticated()')}">
+          <button id="login-button" class="btn btn-header-pro noselect" type="submit">Iniciar Sesión</button>
+      </form>
+
 				<div id="mobile-bars-icon-pro" class="noselect"><i class="fas fa-bars"></i></div>
 				
 				<div class="clearfix"></div>
 			</div><!-- close .container -->
 			
 			
-			<nav id="mobile-navigation-pro">
+      <nav id="mobile-navigation-pro">
 			
 				<ul id="mobile-menu-pro">
 					<li>
-						<a href="/index">Home</a>
+						<a href="/">Inicio</a>
 					</li>
 					<li>
-						<a href="/dashboardHome">New Releases</a>
+						<a href="/dashboardHome">Mi Contenido</a>
 						<!-- Mobile Sub-Menu Example >
 						<ul>
 							<li class="normal-item-pro">
@@ -83,24 +91,24 @@
 						< End Mobile Sub-Menu Example -->
 					</li>
 					<li>
-						<a href="/signupStep1">Pricing Plans</a>
-					</li>
-					<li>
-						<a href="/faqs">FAQs</a>
+						<a href="/faqs">Contáctanos</a>
 					</li>
 				</ul>
 				<div class="clearfix"></div>
-			
-				<button class="btn btn-mobile-pro btn-green-pro noselect" data-toggle="modal" data-target="#LoginModal" role="button">Sign In</button>
-			
+
+                <form method="get" action="/dashboardHome" th:unless="${#authorization.expression('isAuthenticated()')}">
+                  <button id="login-button" class="btn btn-mobile-pro btn-green-pro noselect" type="submit">Iniciar Sesión</button>
+              </form>
+
+
 			</nav>
 		</header>
 		
 		<div id="page-title-pro">
 			<div class="container">
 				<div class="row">
-					<h1>Questions? Look here.</h1>
-					<h6>Can’t find an answer? Call us at (855) 123-4567 or email <a href="mailto:help@yourwebsite.com">help@skrn.com</a></h6>
+					<h1>Contáctanos</h1>
+					<h6>Escríbenos a <a href="mailto:ventas@vivelo.tv">ventas@vivelo.tv</a>, <a href="mailto:soporte@vivelo.tv">soporte@vivelo.tv</a>, <a href="mailto:info@vivelo.tv">info@vivelo.tv</a></h6>
 				</div><!-- close .row -->
 			</div><!-- close .container -->
 		</div><!-- close #page-title-pro -->
@@ -114,51 +122,19 @@
 						
 						<div class="jumbotron jumbotron-fluid jumbotron-pro">
 						  <div class="container">
-							  <span class="icon-User"></span>
-							  <h6 class="light-weight-heading">Subscriber</h6>
+                <img th:src="@{/images/Logo_horizontal_1920x1080_vivelotv_circular_icon_slogan_vf.png}" >
 						  </div>
 						</div><!-- close .jumbotron -->
 						
 					</div><!-- close .col-md -->
+		
+        </div><!-- close .row -->
+        <div class="row">
 					<div class="col-md">
-						
-						<div class="jumbotron jumbotron-fluid jumbotron-pro">
-						  <div class="container">
-							  <span class="icon-TV"></span>
-							  <h6 class="light-weight-heading">Guest</h6>
-						  </div>
-						</div><!-- close .jumbotron -->
-						
+						<p>Somos una empresa de entretenimiento Ecuatoriana, cuyo objetivo principal es brindar a sus usuarios la experiencia los eventos en vivo y contenidos audiovisuales en la comodidad de su casa a través de nuestra plataforma, con la mayor calidad disponible en audio y vídeo, sin complicados trámites, sin tiempos de espera, ni confirmaciones, solo regístrate, compra tu ticket al evento o contenido que quieres ver y disfrútalo dentro de nuestra plataforma.</p>
+						<hr>
 					</div><!-- close .col-md -->
-				</div><!-- close .row -->
-				
-				
-				<div class="row">
-					<div class="col-md">
-						<h6 class="light-weight-heading">What is SKRN?</h6>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie lectus at erat venenatis scelerisque. Integer viverra at tortor nec interdum integer vulputate venen neque vel gravida. Maecenas posuere magna lorem, non ultrices tortor 
-bibendum non. Curabitur ut ante ante.</p>
-						<hr>
-						<h6 class="light-weight-heading">Membership</h6>
-						<p>Vestibulum id pretium odio. Phasellus at nisi sit amet lectus interdum maximus eu vel augue. Proin sodales gravida tempor vivamus ut lorem arcu sed ac fermentum odio.</p>
-						<hr>
-						<h6 class="light-weight-heading">Streaming Devices</h6>
-						<p>Sed sit amet faucibus quam. Maecenas congue cursus iaculis. Vivamus congue, nibh 
-et mollis ullamcorper, quam libero porta ante, eget fermentum est est ac nisl. Praesent bibendum tellus feugiat efficitur porttitor.</p>
-					</div><!-- close .col-md -->
-					
-					
-					<div class="col-md">
-						<h6 class="light-weight-heading">Free Trial</h6>
-						<p>Maecenas posuere magna lorem, non ultrices tortor bibendum non. Curabitur ut ante ante. Phasellus vitae dolor condimentum, accumsan urna at</p>
-						<hr>
-						<h6 class="light-weight-heading">TV Shows &amp; Movies</h6>
-						<p>Aenean nec nulla congue, sodales nunc non, accumsan elit. Proin porttitor pretium suscipit. Quisque venenatis nibh lorem. Vivamus sit amet diam lectus. Mauris imperd nibh in urna ultricies vehicula. Suspendisse eget malesuada ante. Suspendisse ultricies dictum vehicula.</p>
-						<hr>
-						<h6 class="light-weight-heading">Get Started</h6>
-						<p>Praesent vitae leo id lorem vulputate facilisis nec ac ante. Pellentesque augue 
-vestibulum quis luctus vel, facilisis vitae lacus. Nulla sit amet arcu a leo elementum placerat. Integer vestibulum auctor pellentesque.</p>
-					</div><!-- close .col-md -->
+			
 				</div><!-- close .row -->
 				
 				
@@ -172,80 +148,21 @@ vestibulum quis luctus vel, facilisis vitae lacus. Nulla sit amet arcu a leo ele
 			<div class="container">
 				<div class="row">
 					<div class="col-md">
-						<div class="copyright-text-pro">&copy; Copyright 2018 SKRN. All Rights Reserved</div>
+						<div class="copyright-text-pro">&copy; Copyright 2020 Vívelo. All Rights Reserved</div>
 					</div><!-- close .col -->
-					<div class="col-md">
+					<!--div class="col-md">
 						<ul class="social-icons-pro">
 							<li class="facebook-color"><a href="https://facebook.com/progressionstudios" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
 							<li class="twitter-color"><a href="https://twitter.com/Progression_S" target="_blank"><i class="fab fa-twitter"></i></a></li>
 							<li class="youtube-color"><a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
 							<li class="vimeo-color"><a href="https://vimeo.com" target="_blank"><i class="fab fa-vimeo-v"></i></a></li>
 						</ul>
-					</div><!-- close .col -->
+					</div--><!-- close .col -->
 				</div><!-- close .row -->
 			</div><!-- close .container -->
 		</footer>
-		
-		<a href="#0" id="pro-scroll-top"><i class="fas fa-chevron-up"></i></a>
-		
-		
-		<!-- Modal -->
-		<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
-			 <button type="button" class="close float-close-pro" data-dismiss="modal" aria-label="Close">
-			           <span aria-hidden="true">&times;</span>
-			</button>
-		  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
-		    <div class="modal-content">
-				 <div class="modal-header-pro">
-					 <h2>Welcome Back</h2>
-					 <h6>Sign in to your account to continue using SKRN</h6>
-				 </div>
-				 <div class="modal-body-pro social-login-modal-body-pro">
-					 
-					 <div class="registration-social-login-container">
-						 <form>
-							 <div class="form-group">
-								 <input type="text" class="form-control" id="username" placeholder="Username">
-							 </div>
-							 <div class="form-group">
-								 <input type="password" class="form-control" id="password" placeholder="Password">
-							 </div>
-							 <div class="form-group">
-								 <button type="button" class="btn btn-green-pro btn-display-block">Sign In</button>
-							 </div>
-							 <div class="container-fluid">
-								 <div class="row no-gutters">
-							 		<div class="col checkbox-remember-pro"><input type="checkbox" id="checkbox-remember"><label for="checkbox-remember" class="col-form-label">Remember me</label></div>
-									<div class="col forgot-your-password"><a href="#!">Forgot your password?</a></div>
-								</div>
-							</div><!-- close .container-fluid -->
-						
-						 </form>
-					 
-						 <div class="registration-social-login-or">or</div>
-						 
-					 </div><!-- close .registration-social-login-container -->
-					 
-					 <div class="registration-social-login-options">
-					 	<h6>Sign in with your social account</h6>
-						<div class="social-icon-login facebook-color"><i class="fab fa-facebook-f"></i> Facebook</div>
-						<div class="social-icon-login twitter-color"><i class="fab fa-twitter"></i> Twitter</div>
-						<div class="social-icon-login google-color"><i class="fab fa-google-plus-g"></i> Google</div>
-					 </div><!-- close .registration-social-login-options -->
-					 
-					 <div class="clearfix"></div>
-					 
 
- 		      </div><!-- close .modal-body -->
-				
-			 <a class="not-a-member-pro" href="/signupStep2">Not a member? <span>Join Today!</span></a>
-		    </div><!-- close .modal-content -->
-		  </div><!-- close .modal-dialog -->
-		</div><!-- close .modal -->
-		
-
-       
-        		<!-- Required Framework JavaScript -->
+<!-- Required Framework JavaScript -->
 		<script th:src="@{/js/libs/jquery-3.3.1.min.js}"></script><!-- jQuery -->
 		<script th:src="@{/js/libs/popper.min.js}" defer></script><!-- Bootstrap Popper/Extras JS -->
 		<script th:src="@{/js/libs/bootstrap.min.js}" defer></script><!-- Bootstrap Main JS -->

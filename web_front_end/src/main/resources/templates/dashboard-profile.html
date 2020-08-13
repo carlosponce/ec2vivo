@@ -7,11 +7,12 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 		<link rel="stylesheet" th:href="@{/style.css}">
 		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMontserrat:300,400,600,700">
-		
+    <meta th:name="_csrf" th:content="${_csrf.token}"/>
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
 		<link rel="stylesheet" th:href="@{icons/fontawesome/css/fontawesome-all.min.css}"><!-- FontAwesome Icons -->
 		<link rel="stylesheet" th:href="@{icons/Iconsmind__Ultimate_Pack/Line%20icons/styles.min.css}"><!-- iconsmind.com Icons -->
-		
-		<title>SKRN - Media Streaming App</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favicon.png}"/>
+    <title>Vivelo - Vive lo mejor, Vívelo bien! </title>
 	</head>
 	<body>
 		<div id="sidebar-bg">
@@ -132,10 +133,7 @@
 				</div><!-- close #header-user-profile-click -->
 				<div id="header-user-profile-menu">
 					<ul>
-                        <li><a href="/dashboardProfile"><span class="icon-User"></span>Mi Perfil</a></li>
-                        <li><a href="/dashboardFavorites"><span class="icon-Favorite-Window"></span>Favoritos</a></li>
                         <li><a href="/dashboardAccount"><span class="icon-Gears"></span>Mi Cuenta</a></li>
-                        <li><a href="#!"><span class="icon-Life-Safer"></span>Ayuda/Soporte</a></li>
                         <li>
 
                             <form id="logoutForm" method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">

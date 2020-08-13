@@ -43,6 +43,28 @@ public class StreamProviderService {
         return videoList;
     }
 
+    public ResponseMsg getAllVideoList() {
+
+      final String uri = applicationProperties.getStreamingServiceUri() + "/getListVideosJson";
+
+      RestTemplate restTemplate = new RestTemplate();
+      String stringJsonResponse = restTemplate.getForObject(uri, String.class);
+
+      System.out.println(stringJsonResponse);
+
+      ObjectMapper objectMapper = new ObjectMapper();
+      ResponseMsg videoList;
+
+      try {
+          videoList = objectMapper.readValue(stringJsonResponse, ResponseMsg.class);
+      } catch (JsonProcessingException e) {
+          videoList = new ResponseMsg();
+          e.printStackTrace();
+      }
+
+      return videoList;
+  }
+
     public ResponseMsg getVideobyRefNo(String refNo) {
 
         final String uri = applicationProperties.getStreamingServiceUri() + "/getVideobyRefNo?refNo=" + refNo;

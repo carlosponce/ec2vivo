@@ -29,8 +29,8 @@ public class HomeController {
     public String index() {
         return "index";
     }
-
-    /*@RequestMapping("/getVideoList")
+/*
+    @RequestMapping("/getVideoList")
     @ResponseBody
     public ResponseMsg  getVideoListJson() {
         return streamProviderService.getVideoList();
@@ -82,7 +82,7 @@ public class HomeController {
 
     @RequestMapping("/dashboardHome")
     public String dashboardHome(Model model) {
-        model.addAttribute("videoList", streamProviderService.getVideoList("ondemand"));
+        model.addAttribute("videoList", streamProviderService.getAllVideoList());
         return "dashboard-home";
     }
 
@@ -105,33 +105,34 @@ public class HomeController {
     public String dashboardStore(Model model) {
         return "dashboard-store";
     }
-
+/*
 	@RequestMapping("/dashboardAccountPayment")
     public String dashboardAccountPayment() {
         return "dashboard-account-payment";
-    }
+    }*/
 
 	@RequestMapping("/dashboardAccount")
     public String dashboardAccount() {
         return "dashboard-account";
     }
-
+/*
 	@RequestMapping("/dashboardComingSoon")
     public String dashboardComingSoon() {
         return "dashboard-coming-soon";
-    }
-	
+    }*/
+	/*
 	@RequestMapping("/dashboardFavorites")
     public String dashboardFavorites() {
         return "dashboard-favorites";
-    }
+    }*/
 	
-	
+	/*
 	@RequestMapping("/dashboardMovies")
     public String dashboardMovies() {
         return "dashboard-movies";
-    }
-	
+    }*/
+
+	/*
 	@RequestMapping("/dashboardNewArrivals")
     public String dashboardNewArrivals() {
         return "dashboard-new-arrivals";
@@ -156,13 +157,13 @@ public class HomeController {
 	@RequestMapping("/landing")
     public String landing() {
         return "landing";
-    }
+    }*/
 	
 	@RequestMapping("/faqs")
     public String faqs() {
         return "faqs";
     }
-	
+	/*
 	@RequestMapping("/modalLoginSimple")
     public String modalLoginSimple() {
         return "modal-login-simple";
@@ -186,6 +187,6 @@ public class HomeController {
 	@RequestMapping("/signupWelcome")
     public String signupWelcome() {
         return "signup-welcome";
-    }
+    }*/
 
 }
